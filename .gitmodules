@@ -1,0 +1,6 @@
+[submodule "hardware/macropad/libs/keyboard-kicad-lib"]
+	path = hardware/macropad/libs/keyboard-kicad-lib
+	url = https://github.com/Eymeric65/keyboard-kicad-lib.git
+[submodule "hardware/macropad/libs/kaillh-hotswap-lib"]
+	path = hardware/macropad/libs/kaillh-hotswap-lib
+	url = https://github.com/daprice/keyswitches.pretty

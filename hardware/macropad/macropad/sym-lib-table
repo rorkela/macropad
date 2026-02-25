@@ -1,0 +1,4 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "Keyboard Library")(type "KiCad")(uri "/home/sarthak/Documents/stm32mogg/macropad/hardware/macropad/libs/keyboard-kicad-lib/Keyboard_CS.kicad_sym")(options "")(descr ""))
+)
