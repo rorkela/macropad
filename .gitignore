@@ -1,0 +1,10 @@
+bin/
+build/
+*-backups/
+*.kicad_sch-bak
+*.kicad_pcb-bak
+*.bak
+*.bck
+*.kicad_prl
+fp-info-cache
+.clangd
