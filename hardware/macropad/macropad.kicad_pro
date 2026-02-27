@@ -613,6 +613,10 @@
     [
       "228dc472-b306-4e5f-8dc5-2bf23eb4978d",
       "Root"
+    ],
+    [
+      "667b6152-bd4f-4e65-809f-60ee5320cd3d",
+      "dongle"
     ]
   ],
   "text_variables": {}
