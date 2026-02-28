@@ -21,9 +21,9 @@ BUILD_DIR ?= ./build
 ###############################################################################
 # Source files
 
-OPENCM3_DIR ?= /usr/arm-none-eabi
 OBJS		+= $(BUILD_DIR)/$(BINARY).o
 
+LDFLAGS		+= -L$(OPENCM3_DIR)/lib
 LDLIBS		+= -l$(LIBNAME)
 LDSCRIPT	?= $(BINARY).ld
 
