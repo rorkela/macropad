@@ -32,3 +32,4 @@ fp-info-cache
 bin/
 build/
 .clangd
+.mxproject
