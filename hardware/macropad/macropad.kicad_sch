@@ -8744,7 +8744,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "usbc:TYPE-C-SMD_U263-163N-4GS1735"
 			(at 361.95 170.18 0)
 			(effects
 				(font
