@@ -7360,7 +7360,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "usbA:U-G-O4DD-W-1"
 			(at 185.42 116.84 0)
 			(effects
 				(font

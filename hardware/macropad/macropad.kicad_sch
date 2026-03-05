@@ -7458,13 +7458,12 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "GND_DGL"
-			(at 104.14 147.3199 0)
+		(property "Value" "GND"
+			(at 101.6 151.13 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
 			)
 		)
 		(property "Footprint" ""
