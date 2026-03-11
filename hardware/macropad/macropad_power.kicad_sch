@@ -1251,8 +1251,8 @@
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
-			(property "Reference" "Q"
-				(at 5.08 1.27 0)
+			(property "Reference" "Q1"
+				(at 6.35 1.2701 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -1261,7 +1261,7 @@
 				)
 			)
 			(property "Value" "Q_PMOS"
-				(at 5.08 -1.27 0)
+				(at 6.35 -1.2699 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -1269,7 +1269,7 @@
 					(justify left)
 				)
 			)
-			(property "Footprint" ""
+			(property "Footprint" "Package_TO_SOT_SMD:SOT-23-3"
 				(at 5.08 2.54 0)
 				(effects
 					(font
@@ -1483,7 +1483,7 @@
 							)
 						)
 					)
-					(number "G"
+					(number "1"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1501,7 +1501,7 @@
 							)
 						)
 					)
-					(number "D"
+					(number "3"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1519,7 +1519,7 @@
 							)
 						)
 					)
-					(number "S"
+					(number "2"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -5996,13 +5996,13 @@
 				(hide yes)
 			)
 		)
-		(pin "S"
+		(pin "3"
 			(uuid "762862b6-ce9c-4735-8960-db0183919892")
 		)
-		(pin "G"
+		(pin "2"
 			(uuid "f9ac94cd-186b-4ba0-8805-395b849e14f3")
 		)
-		(pin "D"
+		(pin "1"
 			(uuid "2ba40913-41ab-4df3-a248-6ad1a91d171e")
 		)
 		(instances

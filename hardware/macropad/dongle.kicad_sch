@@ -4921,6 +4921,16 @@
 		)
 		(uuid "02a55d17-af1f-4979-b5dd-ec21097b4cf1")
 	)
+	(label "USB_D_DGL-"
+		(at 157.48 63.5 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "08457b3b-1bcf-4c7f-b438-78d21835087b")
+	)
 	(label "PA6_DGL"
 		(at 227.33 31.75 0)
 		(effects
@@ -5010,16 +5020,6 @@
 			(justify right bottom)
 		)
 		(uuid "786345e6-e17f-462b-8e19-3d52bd2bbbcc")
-	)
-	(label "USB_D+_DGL"
-		(at 157.48 66.04 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "7ef6e7fe-c2f0-4d19-a4e4-076045f9bf14")
 	)
 	(label "BOOT0_DGL"
 		(at 191.77 48.26 0)
@@ -5121,15 +5121,15 @@
 		)
 		(uuid "a5013440-caca-4398-99b8-5e8cec0c3b8c")
 	)
-	(label "USB_D-_DGL"
-		(at 157.48 63.5 180)
+	(label "USB_D_DGL+"
+		(at 157.48 66.04 180)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
 			(justify right bottom)
 		)
-		(uuid "ac14632b-c2ca-48c9-92dc-bfc83a07437e")
+		(uuid "b2d00dc6-3f18-40fc-ab55-03a077aab918")
 	)
 	(label "BOOT1_DGL"
 		(at 92.71 68.58 0)
@@ -5151,7 +5151,7 @@
 		)
 		(uuid "cdf26217-ec54-44d5-9b6d-95a27aecd6d4")
 	)
-	(label "USB_D-_DGL"
+	(label "USB_D_DGL-"
 		(at 209.55 118.11 0)
 		(effects
 			(font
@@ -5191,7 +5191,7 @@
 		)
 		(uuid "ec551b5d-142d-44f6-99e2-71385469a449")
 	)
-	(label "USB_D+_DGL"
+	(label "USB_D_DGL+"
 		(at 209.55 115.57 0)
 		(effects
 			(font
