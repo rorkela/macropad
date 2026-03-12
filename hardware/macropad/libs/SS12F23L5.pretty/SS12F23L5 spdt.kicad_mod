@@ -1,0 +1,132 @@
+(footprint "SS12F23L5 spdt"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(property "Reference" "REF**"
+		(at 0.5 2 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "de6ba100-4dd3-4b5e-b182-39bc612fe15b")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.1)
+			)
+		)
+	)
+	(property "Value" "SS12F23L5 spdt"
+		(at 0 5.5 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "4989812d-0e71-4a80-a44e-04bc5d0e39e5")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "f40833cb-6045-4518-808f-58f81371aaa6")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "1454aa56-3568-481f-bd14-f9c4931748b2")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(fp_rect
+		(start -6.45 -6.4)
+		(end 6.45 0)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill no)
+		(layer "Dwgs.User")
+		(uuid "a6254ece-b4e3-4c17-afa7-61aa0fcc61ae")
+	)
+	(fp_rect
+		(start -2 -11.5)
+		(end 1 -6.5)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(fill no)
+		(layer "Dwgs.User")
+		(uuid "319270ca-6fb2-454f-827b-25c0d1017b59")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 3.5 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "36045acc-05a0-4c1b-a756-2e2bad05ef5f")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "1" thru_hole circle
+		(at -3 -0.3)
+		(size 2 2)
+		(drill 1.1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "773d11b6-e6d5-42d7-a943-f981af033c14")
+	)
+	(pad "2" thru_hole circle
+		(at 0 -0.3)
+		(size 2 2)
+		(drill 1.1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "20203e72-b596-4e6b-962a-20c04b248806")
+	)
+	(pad "3" thru_hole circle
+		(at 3 -0.3)
+		(size 2 2)
+		(drill 1.1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "d17f98f0-6798-43d6-a113-d1676990edee")
+	)
+	(pad "4" thru_hole circle
+		(at -6.25 0)
+		(size 2 2)
+		(drill 1.1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "d110b342-e1cf-4e41-a6bb-c9f3f5ff2e02")
+	)
+	(pad "5" thru_hole circle
+		(at 6.25 0)
+		(size 2 2)
+		(drill 1.1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "57df796e-5a21-4a37-8e41-110c341b4e7f")
+	)
+	(embedded_fonts no)
+)
