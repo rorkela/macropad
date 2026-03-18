@@ -4633,6 +4633,16 @@
 	)
 	(wire
 		(pts
+			(xy 39.37 78.74) (xy 30.48 78.74)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bbaf6331-b688-440b-98ec-f34a1d7b3371")
+	)
+	(wire
+		(pts
 			(xy 44.45 106.68) (xy 55.88 106.68)
 		)
 		(stroke
@@ -4750,6 +4760,16 @@
 			(type default)
 		)
 		(uuid "d75ec8b0-4300-4957-b555-c1568f8313b3")
+	)
+	(wire
+		(pts
+			(xy 30.48 78.74) (xy 30.48 90.17)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d7b4a5e6-7b03-4235-96de-d6c14de2ae88")
 	)
 	(wire
 		(pts
@@ -4873,6 +4893,16 @@
 	)
 	(wire
 		(pts
+			(xy 55.88 78.74) (xy 55.88 90.17)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f7c381dc-394f-4e71-a26f-6600817c70a4")
+	)
+	(wire
+		(pts
 			(xy 227.33 29.21) (xy 237.49 29.21)
 		)
 		(stroke
@@ -4910,6 +4940,16 @@
 			(type default)
 		)
 		(uuid "fd7319ca-d9fd-4295-90e1-b78fbc142481")
+	)
+	(wire
+		(pts
+			(xy 46.99 78.74) (xy 55.88 78.74)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ffc02933-e9f1-48bd-8e5d-9b015002e86a")
 	)
 	(label "PB1_DGL"
 		(at 92.71 66.04 0)
@@ -6681,6 +6721,74 @@
 				)
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d/667b6152-bd4f-4e65-809f-60ee5320cd3d"
 					(reference "#PWR047")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 43.18 78.74 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "7fb6ee32-0c5b-435b-9331-107610ed635a")
+		(property "Reference" "R22"
+			(at 43.18 72.39 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "1M"
+			(at 43.18 74.93 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 43.18 80.518 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 43.18 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 43.18 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "0f81349d-a7a7-481e-96fd-4efa49f1473d")
+		)
+		(pin "2"
+			(uuid "b2650af0-bccf-4e61-b4bc-681e45c173a2")
+		)
+		(instances
+			(project "macropad"
+				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d/667b6152-bd4f-4e65-809f-60ee5320cd3d"
+					(reference "R22")
 					(unit 1)
 				)
 			)
