@@ -5279,7 +5279,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "RF_Module:nRF24L01_Breakout"
+		(property "Footprint" "nrf24l01:nRF24L01_Breakout"
 			(at 254 21.59 0)
 			(effects
 				(font

@@ -5374,16 +5374,6 @@
 		)
 		(uuid "ff3ab678-be80-45fd-b356-a617b3cdfc7a")
 	)
-	(label "ENC2DT_PA3"
-		(at 364.49 222.25 90)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "06d5dd94-689c-49f5-8cd3-a7cf525c8e28")
-	)
 	(label "ENC2DT_PA8"
 		(at 365.76 31.75 180)
 		(effects
@@ -5544,6 +5534,16 @@
 		)
 		(uuid "4b3d151e-865e-4074-b1e0-b1c10de1e987")
 	)
+	(label "ENC2SW_PA10"
+		(at 368.3 222.25 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "4efcee06-9694-415b-ab93-084bb17a95e5")
+	)
 	(label "USB_D+"
 		(at 204.47 110.49 0)
 		(effects
@@ -5593,16 +5593,6 @@
 			(justify left bottom)
 		)
 		(uuid "5dd4d599-dff9-4648-80ee-466943b61140")
-	)
-	(label "ENC2SW_PA8"
-		(at 368.3 222.25 90)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "5f8adfd9-62dc-4a67-818e-6b43b156b0dd")
 	)
 	(label "K2"
 		(at 143.51 118.11 180)
@@ -5693,16 +5683,6 @@
 			(justify left bottom)
 		)
 		(uuid "7d35749a-b6cf-42fc-9992-e5e988ddf3a4")
-	)
-	(label "ENC2CLK_PA4"
-		(at 360.68 222.25 90)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "8254bb3c-8c59-4479-bd63-e798e92afdc3")
 	)
 	(label "ENC1CLK_PA1"
 		(at 314.96 36.83 180)
@@ -5873,6 +5853,16 @@
 			(justify right bottom)
 		)
 		(uuid "b787461a-d96d-4502-a2ff-e15c8dc04df1")
+	)
+	(label "ENC2DT_PA8"
+		(at 360.68 222.25 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "bab07a51-b37e-4eee-9189-fccb1a9a09cf")
 	)
 	(label "K7"
 		(at 143.51 138.43 180)
@@ -6073,6 +6063,16 @@
 			(justify right bottom)
 		)
 		(uuid "ef6b9f38-1798-4673-96a9-65f4bc0af592")
+	)
+	(label "ENC2CLK_PA9"
+		(at 364.49 222.25 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "f201c15e-8f54-404a-b902-027ebcb9f571")
 	)
 	(label "ENC1SW_PA2"
 		(at 179.07 85.09 0)
@@ -6990,7 +6990,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Horizontal"
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical"
 			(at 270.51 146.05 0)
 			(effects
 				(font
@@ -8967,7 +8967,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "RF_Module:nRF24L01_Breakout"
+		(property "Footprint" "nrf24l01:nRF24L01_Breakout"
 			(at 269.24 77.47 0)
 			(effects
 				(font

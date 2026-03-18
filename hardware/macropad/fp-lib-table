@@ -7,4 +7,5 @@
   (lib (name "usbc")(type "KiCad")(uri "${KIPRJMOD}/libs/usbc.pretty")(options "")(descr ""))
   (lib (name "usbA")(type "KiCad")(uri "${KIPRJMOD}/libs/usbA.pretty")(options "")(descr ""))
   (lib (name "SS12F23L5")(type "KiCad")(uri "${KIPRJMOD}/libs/SS12F23L5.pretty")(options "")(descr ""))
+  (lib (name "nrf24l01")(type "KiCad")(uri "${KIPRJMOD}/libs/nrf24l01.pretty")(options "")(descr ""))
 )
