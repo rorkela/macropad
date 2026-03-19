@@ -1,7 +1,6 @@
 (fp_lib_table
   (version 7)
   (lib (name "keyswitches")(type "KiCad")(uri "${KIPRJMOD}/libs/keyswitches.pretty")(options "")(descr ""))
-  (lib (name "RT8010A")(type "KiCad")(uri "${KIPRJMOD}/ul_RT8010AGQW/KiCADv6/footprints.pretty")(options "")(descr "")(disabled))
   (lib (name "FS8205A")(type "KiCad")(uri "${KIPRJMOD}/FS8205A")(options "")(descr ""))
   (lib (name "LP2992")(type "KiCad")(uri "${KIPRJMOD}/libs/ul_LP2992IM5-3-3-NOPB/KiCADv6/footprints.pretty")(options "")(descr ""))
   (lib (name "usbc")(type "KiCad")(uri "${KIPRJMOD}/libs/usbc.pretty")(options "")(descr ""))

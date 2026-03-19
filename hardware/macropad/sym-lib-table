@@ -1,6 +1,6 @@
 (sym_lib_table
   (version 7)
-  (lib (name "Keyboard Library")(type "KiCad")(uri "/home/sarthak/Documents/stm32mogg/macropad/hardware/macropad/libs/keyboard-kicad-lib/Keyboard_CS.kicad_sym")(options " pwr_sym_only")(descr ""))
+  (lib (name "Keyboard Library")(type "KiCad")(uri "/home/sarthak/Documents/stm32mogg/macropad/hardware/macropad/libs/keyboard-kicad-lib/Keyboard_CS.kicad_sym")(options " pwr_sym_only pwr_sym_only")(descr ""))
   (lib (name "LP2992")(type "KiCad")(uri "${KIPRJMOD}/libs/ul_LP2992IM5-3-3-NOPB/KiCADv6/2026-03-03_19-12-43.kicad_sym")(options "")(descr ""))
   (lib (name "RT8010")(type "KiCad")(uri "${KIPRJMOD}/ul_RT8010AGQW/KiCADv6/2026-02-28_18-02-32.kicad_sym")(options "")(descr ""))
   (lib (name "FS8205A")(type "KiCad")(uri "${KIPRJMOD}/FS8205A/FS8205A.kicad_sym")(options "")(descr ""))
