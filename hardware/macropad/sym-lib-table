@@ -4,4 +4,5 @@
   (lib (name "LP2992")(type "KiCad")(uri "${KIPRJMOD}/libs/ul_LP2992IM5-3-3-NOPB/KiCADv6/2026-03-03_19-12-43.kicad_sym")(options "")(descr ""))
   (lib (name "RT8010")(type "KiCad")(uri "${KIPRJMOD}/ul_RT8010AGQW/KiCADv6/2026-02-28_18-02-32.kicad_sym")(options "")(descr ""))
   (lib (name "FS8205A")(type "KiCad")(uri "${KIPRJMOD}/FS8205A/FS8205A.kicad_sym")(options "")(descr ""))
+  (lib (name "rt8010")(type "KiCad")(uri "${KIPRJMOD}/libs/rt8010.kicad_sym")(options "")(descr ""))
 )
