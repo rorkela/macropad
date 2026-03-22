@@ -5415,7 +5415,7 @@
 		(uuid "0b1f55a4-0c9c-4e56-b473-41bc1c75d055")
 	)
 	(label "ENC1CLK_PA1"
-		(at 179.07 82.55 0)
+		(at 179.07 102.87 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5485,7 +5485,7 @@
 		(uuid "3326f09b-c4ea-4d10-99c7-2f98e794d107")
 	)
 	(label "ENC2DT_PA8"
-		(at 179.07 100.33 0)
+		(at 179.07 80.01 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5705,7 +5705,7 @@
 		(uuid "89a2b795-b47a-40eb-a2b6-db966a5129af")
 	)
 	(label "ENC2SW_PA10"
-		(at 179.07 105.41 0)
+		(at 179.07 85.09 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5815,7 +5815,7 @@
 		(uuid "abaa2043-7b19-400f-aab5-158e8b1e2528")
 	)
 	(label "ENC1DT_PA0"
-		(at 179.07 80.01 0)
+		(at 179.07 100.33 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6045,7 +6045,7 @@
 		(uuid "ebbd5a18-3fda-4f74-9bad-31b325900c5d")
 	)
 	(label "ENC2CLK_PA9"
-		(at 179.07 102.87 0)
+		(at 179.07 82.55 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6075,7 +6075,7 @@
 		(uuid "f201c15e-8f54-404a-b902-027ebcb9f571")
 	)
 	(label "ENC1SW_PA2"
-		(at 179.07 85.09 0)
+		(at 179.07 105.41 0)
 		(effects
 			(font
 				(size 1.27 1.27)
