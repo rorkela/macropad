@@ -3850,6 +3850,12 @@
 		)
 	)
 	(junction
+		(at 135.89 154.94)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "1079e4f5-1cb4-456d-b07d-b5e28a6054dc")
+	)
+	(junction
 		(at 115.57 96.52)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -4890,16 +4896,6 @@
 			(justify right bottom)
 		)
 		(uuid "8abc960c-7a20-44eb-a4c7-ad4a8abfa5ac")
-	)
-	(label "out-"
-		(at 135.89 154.94 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "9464ad48-d1f7-4332-bfad-f0e34bf4703c")
 	)
 	(label "Vout_buck"
 		(at 304.8 129.54 0)
@@ -7892,6 +7888,72 @@
 				)
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d/5b38d27c-d7f4-4a8d-8a5e-966bba03fead"
 					(reference "C24")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 135.89 154.94 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "df29ac7d-7520-4e62-b24e-d42a16a02daa")
+		(property "Reference" "#PWR016"
+			(at 135.89 161.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 135.89 160.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 135.89 154.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 135.89 154.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 135.89 154.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "8b477eb5-6d4f-43ff-94fb-4d7748e18161")
+		)
+		(instances
+			(project "macropad"
+				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d/5b38d27c-d7f4-4a8d-8a5e-966bba03fead"
+					(reference "#PWR016")
 					(unit 1)
 				)
 			)
