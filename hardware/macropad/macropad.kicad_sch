@@ -7441,7 +7441,7 @@
 			(uuid "e0d63ea2-1214-4ca0-a8c8-c3e4a9fe9cbb")
 		)
 		(instances
-			(project ""
+			(project "macropad"
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
 					(reference "R2")
 					(unit 1)
@@ -7581,7 +7581,7 @@
 			(uuid "e8768982-205d-417d-a028-458fb948d1d7")
 		)
 		(instances
-			(project ""
+			(project "macropad"
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
 					(reference "R11")
 					(unit 1)
@@ -7647,7 +7647,7 @@
 			(uuid "bf9604d0-4237-49fc-b2f0-572f63c581e6")
 		)
 		(instances
-			(project ""
+			(project "macropad"
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
 					(reference "#PWR015")
 					(unit 1)
@@ -7663,7 +7663,6 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "564159c2-96b1-4f6e-a8c3-ebb5587b66aa")
 		(property "Reference" "J2"
 			(at 355.6 134.62 0)
@@ -7682,12 +7681,11 @@
 			)
 		)
 		(property "Footprint" "usbc:TYPE-C-SMD_U263-163N-4GS1735"
-			(at 359.41 157.48 0)
+			(at 360.172 185.166 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Datasheet" "https://www.usb.org/sites/default/files/documents/usb_type-c.zip"
@@ -7760,7 +7758,7 @@
 			(uuid "1c288a5f-eb97-4055-9887-f1bbcab52d4a")
 		)
 		(instances
-			(project ""
+			(project "macropad"
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
 					(reference "J2")
 					(unit 1)
@@ -10982,7 +10980,7 @@
 			(uuid "c2ee1f7b-98af-435c-99f0-e370ee489754")
 		)
 		(instances
-			(project ""
+			(project "macropad"
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
 					(reference "C9")
 					(unit 1)
@@ -11353,7 +11351,7 @@
 			(uuid "242e63c0-f27e-4600-a750-e9a55818e2e6")
 		)
 		(instances
-			(project ""
+			(project "macropad"
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
 					(reference "SW12")
 					(unit 1)

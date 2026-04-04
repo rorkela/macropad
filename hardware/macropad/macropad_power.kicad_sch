@@ -4989,7 +4989,7 @@
 			(uuid "6c089107-6d48-42b6-8ece-7aae9536b92c")
 		)
 		(instances
-			(project ""
+			(project "macropad"
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
 					(reference "R1")
 					(unit 1)
@@ -5059,7 +5059,7 @@
 			(uuid "74a3f64a-48ab-4bc5-9339-c43b9403ff8d")
 		)
 		(instances
-			(project ""
+			(project "macropad"
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
 					(reference "#PWR02")
 					(unit 1)
@@ -5142,7 +5142,7 @@
 			(uuid "26bfea3b-28a8-42de-9295-15374721e2c4")
 		)
 		(instances
-			(project ""
+			(project "macropad"
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
 					(reference "D1")
 					(unit 1)
@@ -5283,7 +5283,7 @@
 			(uuid "5210cc40-c31c-4c8e-b885-cbaf6136e427")
 		)
 		(instances
-			(project ""
+			(project "macropad"
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
 					(reference "R5")
 					(unit 1)
@@ -5355,7 +5355,7 @@
 			(uuid "79510ced-ead0-4526-94de-a7688bc52dd1")
 		)
 		(instances
-			(project ""
+			(project "macropad"
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
 					(reference "L1")
 					(unit 1)
@@ -5429,7 +5429,7 @@
 			(uuid "95710053-9bd9-456d-afb8-9fc00e1e2922")
 		)
 		(instances
-			(project "macropad_power"
+			(project "macropad"
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
 					(reference "C7")
 					(unit 1)
@@ -5499,7 +5499,7 @@
 			(uuid "afdd8ed9-338e-4f1a-9225-d6eace92e323")
 		)
 		(instances
-			(project "macropad_power"
+			(project "macropad"
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
 					(reference "#FLG05")
 					(unit 1)
@@ -5573,7 +5573,7 @@
 			(uuid "ccaccc7c-ad06-4360-8982-c24e5b0b8193")
 		)
 		(instances
-			(project "macropad_power"
+			(project "macropad"
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
 					(reference "C8")
 					(unit 1)
@@ -5647,7 +5647,7 @@
 			(uuid "81c95cd5-f793-489d-9a01-4b60b89060a3")
 		)
 		(instances
-			(project "macropad_power"
+			(project "macropad"
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
 					(reference "C5")
 					(unit 1)
@@ -5721,7 +5721,7 @@
 			(uuid "ffea0042-ebc3-444f-a2b2-8ca07cdfeb39")
 		)
 		(instances
-			(project ""
+			(project "macropad"
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
 					(reference "R4")
 					(unit 1)
@@ -5798,7 +5798,7 @@
 			(uuid "2ba40913-41ab-4df3-a248-6ad1a91d171e")
 		)
 		(instances
-			(project ""
+			(project "macropad"
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
 					(reference "Q1")
 					(unit 1)
@@ -5873,7 +5873,7 @@
 			(uuid "88dbc3fc-261a-4490-a9ea-b222fcd26e11")
 		)
 		(instances
-			(project "macropad_power"
+			(project "macropad"
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
 					(reference "SW1")
 					(unit 1)
@@ -5947,7 +5947,7 @@
 			(uuid "7d4a391d-67a7-488d-935e-688af84b7585")
 		)
 		(instances
-			(project ""
+			(project "macropad"
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
 					(reference "J1")
 					(unit 1)
@@ -6017,7 +6017,7 @@
 			(uuid "5965592e-16a2-4693-9e06-c575d09943aa")
 		)
 		(instances
-			(project ""
+			(project "macropad"
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
 					(reference "#PWR06")
 					(unit 1)
@@ -6100,7 +6100,7 @@
 			(uuid "0507aa36-7a52-489f-b175-1252df50d34a")
 		)
 		(instances
-			(project ""
+			(project "macropad"
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
 					(reference "U4")
 					(unit 1)
@@ -6172,7 +6172,7 @@
 			(uuid "6f516114-47e2-4b5b-b41d-7bd196663e2d")
 		)
 		(instances
-			(project ""
+			(project "macropad"
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
 					(reference "R6")
 					(unit 1)
@@ -6242,7 +6242,7 @@
 			(uuid "caddde46-b070-4b73-9cc8-b62b23a9500e")
 		)
 		(instances
-			(project ""
+			(project "macropad"
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
 					(reference "#FLG03")
 					(unit 1)
@@ -6315,7 +6315,7 @@
 			(uuid "ed46a834-f9c5-48b8-a6d0-d5e0a84ab0e3")
 		)
 		(instances
-			(project ""
+			(project "macropad"
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
 					(reference "R3")
 					(unit 1)
@@ -6386,7 +6386,7 @@
 			(uuid "50b21159-4dfc-4c50-8187-afbf823c6fb2")
 		)
 		(instances
-			(project ""
+			(project "macropad"
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
 					(reference "#FLG04")
 					(unit 1)
@@ -6456,7 +6456,7 @@
 			(uuid "20569728-10a5-47b1-9912-3dc4c847267c")
 		)
 		(instances
-			(project "macropad_power"
+			(project "macropad"
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
 					(reference "#PWR05")
 					(unit 1)
@@ -6543,7 +6543,7 @@
 			(uuid "5aa0c2fe-ec29-48fe-ad5f-e7192a698428")
 		)
 		(instances
-			(project ""
+			(project "macropad"
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d/5b38d27c-d7f4-4a8d-8a5e-966bba03fead"
 					(reference "U10")
 					(unit 1)
@@ -6622,7 +6622,7 @@
 			(uuid "e03d4d71-f66f-490a-82cc-1ef1c01da18d")
 		)
 		(instances
-			(project "macropad_power"
+			(project "macropad"
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
 					(reference "D2")
 					(unit 1)
@@ -6694,7 +6694,7 @@
 			(uuid "128a28f3-dc15-4c10-8c3a-d84f5bb40692")
 		)
 		(instances
-			(project ""
+			(project "macropad"
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
 					(reference "D3")
 					(unit 1)
@@ -6768,7 +6768,7 @@
 			(uuid "533b5516-2fce-41a0-bc87-386c23308cba")
 		)
 		(instances
-			(project "macropad_power"
+			(project "macropad"
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
 					(reference "R2")
 					(unit 1)
@@ -6843,7 +6843,7 @@
 			(uuid "756f2a36-72dd-40c0-8d4d-71b6c6f4c965")
 		)
 		(instances
-			(project ""
+			(project "macropad"
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
 					(reference "C2")
 					(unit 1)
@@ -7056,7 +7056,7 @@
 			(uuid "2e3cdda3-2094-4efb-ae55-649a027e712a")
 		)
 		(instances
-			(project ""
+			(project "macropad"
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
 					(reference "Q2")
 					(unit 1)
@@ -7130,7 +7130,7 @@
 			(uuid "c3d51b14-90ca-4d4f-88f2-e0faf3d8f27c")
 		)
 		(instances
-			(project ""
+			(project "macropad"
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
 					(reference "C3")
 					(unit 1)
@@ -7215,7 +7215,7 @@
 			(uuid "23b39611-85fa-441e-a79d-0ce34055d239")
 		)
 		(instances
-			(project ""
+			(project "macropad"
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
 					(reference "U2")
 					(unit 1)
@@ -7289,7 +7289,7 @@
 			(uuid "1caf5358-bfe8-45fe-95a3-51e4f0b83fea")
 		)
 		(instances
-			(project ""
+			(project "macropad"
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
 					(reference "C4")
 					(unit 1)
@@ -7359,7 +7359,7 @@
 			(uuid "7a89ebd2-702d-4c22-9330-d1de8bfd0707")
 		)
 		(instances
-			(project "macropad_power"
+			(project "macropad"
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
 					(reference "#FLG07")
 					(unit 1)
@@ -7436,7 +7436,7 @@
 			(uuid "cc12ff88-ca17-48ce-97ef-f605254888b1")
 		)
 		(instances
-			(project ""
+			(project "macropad"
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d/5b38d27c-d7f4-4a8d-8a5e-966bba03fead"
 					(reference "J6")
 					(unit 1)
@@ -7502,7 +7502,7 @@
 			(uuid "0bba6bf0-260c-4a74-af4a-ca5bba762cc0")
 		)
 		(instances
-			(project "macropad_power"
+			(project "macropad"
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
 					(reference "#PWR07")
 					(unit 1)
@@ -7597,7 +7597,7 @@
 			(uuid "d1cd1beb-eea5-41cd-adac-64e44795c74d")
 		)
 		(instances
-			(project ""
+			(project "macropad"
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
 					(reference "U1")
 					(unit 1)
@@ -7667,7 +7667,7 @@
 			(uuid "5f30bc7d-abb4-4309-b70b-030f467274ec")
 		)
 		(instances
-			(project ""
+			(project "macropad"
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
 					(reference "#PWR01")
 					(unit 1)
@@ -7737,7 +7737,7 @@
 			(uuid "4f1e23d3-1987-46af-aca2-948beca3a3cc")
 		)
 		(instances
-			(project "macropad_power"
+			(project "macropad"
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
 					(reference "#PWR04")
 					(unit 1)
@@ -7807,7 +7807,7 @@
 			(uuid "72b26f75-cf5e-4519-85f4-defdcd82ed37")
 		)
 		(instances
-			(project "macropad_power"
+			(project "macropad"
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
 					(reference "#FLG02")
 					(unit 1)
@@ -7881,7 +7881,7 @@
 			(uuid "07d548be-9088-49c3-996e-8efe1f53b255")
 		)
 		(instances
-			(project ""
+			(project "macropad"
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
 					(reference "C1")
 					(unit 1)
@@ -8017,7 +8017,7 @@
 			(uuid "b8d3a672-2abb-4261-a997-cbf5f09a6fc9")
 		)
 		(instances
-			(project "macropad_power"
+			(project "macropad"
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
 					(reference "#PWR08")
 					(unit 1)
@@ -8157,7 +8157,7 @@
 			(uuid "0bb525a5-2897-44d8-9701-dfb08ca49e14")
 		)
 		(instances
-			(project ""
+			(project "macropad"
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
 					(reference "C6")
 					(unit 1)
@@ -8227,7 +8227,7 @@
 			(uuid "48a32580-2ecf-4070-90d0-fca217e28678")
 		)
 		(instances
-			(project "macropad_power"
+			(project "macropad"
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
 					(reference "#PWR03")
 					(unit 1)

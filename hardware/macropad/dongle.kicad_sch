@@ -5333,7 +5333,7 @@
 			(uuid "9932f62d-40c2-44b5-9ccc-8aea3b283242")
 		)
 		(instances
-			(project "dongle"
+			(project "macropad"
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
 					(reference "U3")
 					(unit 1)
@@ -5407,7 +5407,7 @@
 			(uuid "2c6eb09b-f01d-4412-b46a-4b45ca3b36c9")
 		)
 		(instances
-			(project "dongle"
+			(project "macropad"
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
 					(reference "C7")
 					(unit 1)
@@ -5438,13 +5438,12 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "GND_DGL"
-			(at 35.56 62.2299 0)
+		(property "Value" "GND"
+			(at 33.02 66.04 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
 			)
 		)
 		(property "Footprint" ""
@@ -5478,7 +5477,7 @@
 			(uuid "a366cfe5-a639-4625-a41d-265ec489edbf")
 		)
 		(instances
-			(project "dongle"
+			(project "macropad"
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
 					(reference "#PWR04")
 					(unit 1)
@@ -5552,7 +5551,7 @@
 			(uuid "b728aebe-60ac-496b-87ab-3e3237668e19")
 		)
 		(instances
-			(project "dongle"
+			(project "macropad"
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
 					(reference "C6")
 					(unit 1)
@@ -5583,13 +5582,12 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "GND_DGL"
-			(at 46.99 111.7599 0)
+		(property "Value" "GND"
+			(at 44.45 115.57 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
 			)
 		)
 		(property "Footprint" ""
@@ -5623,7 +5621,7 @@
 			(uuid "7883cfb1-6847-4b61-a750-667318bd0f33")
 		)
 		(instances
-			(project "dongle"
+			(project "macropad"
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
 					(reference "#PWR01")
 					(unit 1)
@@ -5694,7 +5692,7 @@
 			(uuid "886fb1cc-d6d5-4e72-9d7b-da399d9f61eb")
 		)
 		(instances
-			(project "dongle"
+			(project "macropad"
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
 					(reference "#PWR03")
 					(unit 1)
@@ -5768,7 +5766,7 @@
 			(uuid "3abbc9ef-fbbf-47dd-8988-38b9e0250b19")
 		)
 		(instances
-			(project "dongle"
+			(project "macropad"
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
 					(reference "J3")
 					(unit 1)
@@ -5799,13 +5797,12 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "GND_DGL"
-			(at 189.23 58.4199 0)
+		(property "Value" "GND"
+			(at 186.69 62.23 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
 			)
 		)
 		(property "Footprint" ""
@@ -5839,7 +5836,7 @@
 			(uuid "51b1fa5e-d0e9-4fcc-a6e4-8165753f46ec")
 		)
 		(instances
-			(project "dongle"
+			(project "macropad"
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
 					(reference "#PWR018")
 					(unit 1)
@@ -5869,7 +5866,7 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "GND_DGL"
+		(property "Value" "GND"
 			(at 125.476 114.808 0)
 			(effects
 				(font
@@ -5909,7 +5906,7 @@
 			(uuid "07dc9592-19e8-4129-8d82-829a2e1299d9")
 		)
 		(instances
-			(project "dongle"
+			(project "macropad"
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
 					(reference "#PWR08")
 					(unit 1)
@@ -5983,7 +5980,7 @@
 			(uuid "bce78ae8-e521-42a8-b9dd-b892495e8927")
 		)
 		(instances
-			(project ""
+			(project "macropad"
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
 					(reference "C11")
 					(unit 1)
@@ -6057,7 +6054,7 @@
 			(uuid "400a1d86-27ba-4c13-9b44-35452cb65ed5")
 		)
 		(instances
-			(project "dongle"
+			(project "macropad"
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
 					(reference "C10")
 					(unit 1)
@@ -6135,7 +6132,7 @@
 			(uuid "2cec2e93-d967-41c7-9af3-cc83a70725f9")
 		)
 		(instances
-			(project "dongle"
+			(project "macropad"
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
 					(reference "J2")
 					(unit 1)
@@ -6208,7 +6205,7 @@
 			(uuid "615670f6-5cf6-4474-b1ce-85cae68b0fd5")
 		)
 		(instances
-			(project "dongle"
+			(project "macropad"
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
 					(reference "R1")
 					(unit 1)
@@ -6282,7 +6279,7 @@
 			(uuid "dead8994-c64d-4e60-ac3f-530fc10782b6")
 		)
 		(instances
-			(project "dongle"
+			(project "macropad"
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
 					(reference "C8")
 					(unit 1)
@@ -6352,7 +6349,7 @@
 			(uuid "4dd6f764-73d4-4893-9221-d43042e3c3a5")
 		)
 		(instances
-			(project "dongle"
+			(project "macropad"
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
 					(reference "#FLG01")
 					(unit 1)
@@ -6424,7 +6421,7 @@
 			(uuid "c2ee1f7b-98af-435c-99f0-e370ee489754")
 		)
 		(instances
-			(project ""
+			(project "macropad"
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
 					(reference "C9")
 					(unit 1)
@@ -6495,7 +6492,7 @@
 			(uuid "e9bb3b25-4a1a-4ff4-aae2-edbbb9d2a386")
 		)
 		(instances
-			(project "dongle"
+			(project "macropad"
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
 					(reference "#PWR06")
 					(unit 1)
@@ -6569,7 +6566,7 @@
 			(uuid "f78cc71a-4490-4dce-bb71-2008b24419f9")
 		)
 		(instances
-			(project "dongle"
+			(project "macropad"
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
 					(reference "C4")
 					(unit 1)
@@ -6643,7 +6640,7 @@
 			(uuid "795c7e14-5873-4332-8520-ffc86a045d57")
 		)
 		(instances
-			(project "dongle"
+			(project "macropad"
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
 					(reference "C3")
 					(unit 1)
@@ -6714,7 +6711,7 @@
 			(uuid "3c54dcb8-3bc0-475d-b640-a8ba8ab79650")
 		)
 		(instances
-			(project "dongle"
+			(project "macropad"
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
 					(reference "#PWR07")
 					(unit 1)
@@ -6852,7 +6849,7 @@
 			(uuid "c148bb71-3267-412a-9a9a-8366b38590e5")
 		)
 		(instances
-			(project "dongle"
+			(project "macropad"
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
 					(reference "#FLG02")
 					(unit 1)
@@ -6926,7 +6923,7 @@
 			(uuid "2c1e7bae-a9bd-49fc-a747-1c57aed72d9b")
 		)
 		(instances
-			(project "dongle"
+			(project "macropad"
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
 					(reference "C1")
 					(unit 1)
@@ -6997,7 +6994,7 @@
 			(uuid "a092aec4-27e7-4804-89e9-d89a6f020ed9")
 		)
 		(instances
-			(project "dongle"
+			(project "macropad"
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
 					(reference "#PWR016")
 					(unit 1)
@@ -7028,13 +7025,12 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "GND_DGL"
-			(at 194.31 31.7499 0)
+		(property "Value" "GND"
+			(at 191.77 35.56 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
 			)
 		)
 		(property "Footprint" ""
@@ -7068,7 +7064,7 @@
 			(uuid "c5f3fd8e-80c9-4505-8968-5b8f44d02c9e")
 		)
 		(instances
-			(project "dongle"
+			(project "macropad"
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
 					(reference "#PWR013")
 					(unit 1)
@@ -7142,7 +7138,7 @@
 			(uuid "6b83d50d-5bd6-46a3-8421-fd4aaacb6f85")
 		)
 		(instances
-			(project "dongle"
+			(project "macropad"
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
 					(reference "R2")
 					(unit 1)
@@ -7216,7 +7212,7 @@
 			(uuid "4614f879-e732-434e-9286-68a4ed2eb282")
 		)
 		(instances
-			(project "dongle"
+			(project "macropad"
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
 					(reference "C13")
 					(unit 1)
@@ -7290,7 +7286,7 @@
 			(uuid "aafd28e3-0a48-438f-aaff-acb8140d9cb3")
 		)
 		(instances
-			(project "dongle"
+			(project "macropad"
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
 					(reference "R3")
 					(unit 1)
@@ -7361,7 +7357,7 @@
 			(uuid "96b930de-c4b7-4fe1-869c-b8fceed60aef")
 		)
 		(instances
-			(project "dongle"
+			(project "macropad"
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
 					(reference "#PWR012")
 					(unit 1)
@@ -7444,7 +7440,7 @@
 			(uuid "cf058af4-cabf-4781-b236-7b7407837b23")
 		)
 		(instances
-			(project ""
+			(project "macropad"
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
 					(reference "U1")
 					(unit 1)
@@ -7525,7 +7521,7 @@
 			(uuid "a1d67daf-24fc-4de0-bdf2-b0e2be6d1580")
 		)
 		(instances
-			(project ""
+			(project "macropad"
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
 					(reference "J1")
 					(unit 1)
@@ -7599,7 +7595,7 @@
 			(uuid "7a9d4335-f784-4adf-82d3-5e84f2df4653")
 		)
 		(instances
-			(project "dongle"
+			(project "macropad"
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
 					(reference "C12")
 					(unit 1)
@@ -7629,7 +7625,7 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "GND_DGL"
+		(property "Value" "GND"
 			(at 186.69 131.064 0)
 			(effects
 				(font
@@ -7669,7 +7665,7 @@
 			(uuid "9ce51b5d-379b-4785-9c92-b1668845a117")
 		)
 		(instances
-			(project "dongle"
+			(project "macropad"
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
 					(reference "#PWR010")
 					(unit 1)
@@ -7700,13 +7696,12 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "GND_DGL"
-			(at 252.73 54.6099 0)
+		(property "Value" "GND"
+			(at 250.19 58.42 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
 			)
 		)
 		(property "Footprint" ""
@@ -7740,7 +7735,7 @@
 			(uuid "5e329e42-3290-4452-ab33-24ccbba0dde4")
 		)
 		(instances
-			(project "dongle"
+			(project "macropad"
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
 					(reference "#PWR017")
 					(unit 1)
@@ -7814,7 +7809,7 @@
 			(uuid "826c5961-3940-477f-b43c-b70047a68a3c")
 		)
 		(instances
-			(project "dongle"
+			(project "macropad"
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
 					(reference "C5")
 					(unit 1)
@@ -7910,7 +7905,7 @@
 			(uuid "53e5390f-6c65-4a58-92c8-45e9d6ba3427")
 		)
 		(instances
-			(project ""
+			(project "macropad"
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
 					(reference "Y1")
 					(unit 1)
@@ -7980,7 +7975,7 @@
 			(uuid "5535fa80-5a14-4655-ad53-10e137f85ce6")
 		)
 		(instances
-			(project "dongle"
+			(project "macropad"
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
 					(reference "#PWR02")
 					(unit 1)
@@ -8011,13 +8006,12 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "GND_DGL"
-			(at 64.77 190.4999 0)
+		(property "Value" "GND"
+			(at 62.23 194.31 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
 			)
 		)
 		(property "Footprint" ""
@@ -8051,7 +8045,7 @@
 			(uuid "fec9074e-b676-4cdd-8621-c9cb271e2aca")
 		)
 		(instances
-			(project "dongle"
+			(project "macropad"
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
 					(reference "#PWR05")
 					(unit 1)
@@ -8122,7 +8116,7 @@
 			(uuid "85e61ee7-0662-4009-91c6-90a548cbdf1d")
 		)
 		(instances
-			(project "dongle"
+			(project "macropad"
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
 					(reference "#PWR015")
 					(unit 1)
@@ -8335,7 +8329,7 @@
 			(uuid "93a7caf7-5be0-48e6-8649-3a08939d42ad")
 		)
 		(instances
-			(project "dongle"
+			(project "macropad"
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
 					(reference "U2")
 					(unit 1)
@@ -8409,7 +8403,7 @@
 			(uuid "dac580aa-aec8-4189-a95a-54557dc86fcd")
 		)
 		(instances
-			(project "dongle"
+			(project "macropad"
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
 					(reference "C2")
 					(unit 1)
@@ -8440,7 +8434,7 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "GND_DGL"
+		(property "Value" "GND"
 			(at 191.77 95.25 0)
 			(effects
 				(font
@@ -8479,7 +8473,7 @@
 			(uuid "bf9604d0-4237-49fc-b2f0-572f63c581e6")
 		)
 		(instances
-			(project ""
+			(project "macropad"
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
 					(reference "#PWR041")
 					(unit 1)
@@ -8549,7 +8543,7 @@
 			(uuid "035b1f99-0c40-46cc-b6c8-517ea55f524d")
 		)
 		(instances
-			(project "dongle"
+			(project "macropad"
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
 					(reference "#PWR011")
 					(unit 1)
