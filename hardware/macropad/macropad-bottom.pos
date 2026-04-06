@@ -1,0 +1,7 @@
+### Footprint positions - created on 2026-04-06T14:31:54+0530 ###
+### Printed by KiCad version 9.0.8-1.fc43
+## Unit = mm, Angle = deg.
+## Side : bottom
+# Ref     Val         Package                                             PosX       PosY       Rot  Side
+J10       Conn_01x02  Hirose_DF13-02P-1.25DSA_1x02_P1.25mm_Vertical   162.5580   -99.4150  -90.0000  bottom
+## End

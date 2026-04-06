@@ -4990,10 +4990,6 @@
 		)
 		(instances
 			(project "macropad"
-				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
-					(reference "R1")
-					(unit 1)
-				)
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d/5b38d27c-d7f4-4a8d-8a5e-966bba03fead"
 					(reference "R7")
 					(unit 1)
@@ -5060,10 +5056,6 @@
 		)
 		(instances
 			(project "macropad"
-				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
-					(reference "#PWR02")
-					(unit 1)
-				)
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d/5b38d27c-d7f4-4a8d-8a5e-966bba03fead"
 					(reference "#PWR0104")
 					(unit 1)
@@ -5143,10 +5135,6 @@
 		)
 		(instances
 			(project "macropad"
-				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
-					(reference "D1")
-					(unit 1)
-				)
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d/5b38d27c-d7f4-4a8d-8a5e-966bba03fead"
 					(reference "D1")
 					(unit 1)
@@ -5284,10 +5272,6 @@
 		)
 		(instances
 			(project "macropad"
-				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
-					(reference "R5")
-					(unit 1)
-				)
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d/5b38d27c-d7f4-4a8d-8a5e-966bba03fead"
 					(reference "R9")
 					(unit 1)
@@ -5356,10 +5340,6 @@
 		)
 		(instances
 			(project "macropad"
-				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
-					(reference "L1")
-					(unit 1)
-				)
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d/5b38d27c-d7f4-4a8d-8a5e-966bba03fead"
 					(reference "L1")
 					(unit 1)
@@ -5430,10 +5410,6 @@
 		)
 		(instances
 			(project "macropad"
-				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
-					(reference "C7")
-					(unit 1)
-				)
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d/5b38d27c-d7f4-4a8d-8a5e-966bba03fead"
 					(reference "C29")
 					(unit 1)
@@ -5500,10 +5476,6 @@
 		)
 		(instances
 			(project "macropad"
-				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
-					(reference "#FLG05")
-					(unit 1)
-				)
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d/5b38d27c-d7f4-4a8d-8a5e-966bba03fead"
 					(reference "#FLG0103")
 					(unit 1)
@@ -5574,10 +5546,6 @@
 		)
 		(instances
 			(project "macropad"
-				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
-					(reference "C8")
-					(unit 1)
-				)
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d/5b38d27c-d7f4-4a8d-8a5e-966bba03fead"
 					(reference "C30")
 					(unit 1)
@@ -5648,10 +5616,6 @@
 		)
 		(instances
 			(project "macropad"
-				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
-					(reference "C5")
-					(unit 1)
-				)
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d/5b38d27c-d7f4-4a8d-8a5e-966bba03fead"
 					(reference "C28")
 					(unit 1)
@@ -5722,10 +5686,6 @@
 		)
 		(instances
 			(project "macropad"
-				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
-					(reference "R4")
-					(unit 1)
-				)
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d/5b38d27c-d7f4-4a8d-8a5e-966bba03fead"
 					(reference "R8")
 					(unit 1)
@@ -5799,10 +5759,6 @@
 		)
 		(instances
 			(project "macropad"
-				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
-					(reference "Q1")
-					(unit 1)
-				)
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d/5b38d27c-d7f4-4a8d-8a5e-966bba03fead"
 					(reference "Q1")
 					(unit 1)
@@ -5874,10 +5830,6 @@
 		)
 		(instances
 			(project "macropad"
-				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
-					(reference "SW1")
-					(unit 1)
-				)
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d/5b38d27c-d7f4-4a8d-8a5e-966bba03fead"
 					(reference "SW10")
 					(unit 1)
@@ -5948,10 +5900,6 @@
 		)
 		(instances
 			(project "macropad"
-				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
-					(reference "J1")
-					(unit 1)
-				)
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d/5b38d27c-d7f4-4a8d-8a5e-966bba03fead"
 					(reference "J8")
 					(unit 1)
@@ -6018,10 +5966,6 @@
 		)
 		(instances
 			(project "macropad"
-				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
-					(reference "#PWR06")
-					(unit 1)
-				)
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d/5b38d27c-d7f4-4a8d-8a5e-966bba03fead"
 					(reference "#PWR0102")
 					(unit 1)
@@ -6101,10 +6045,6 @@
 		)
 		(instances
 			(project "macropad"
-				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
-					(reference "U4")
-					(unit 1)
-				)
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d/5b38d27c-d7f4-4a8d-8a5e-966bba03fead"
 					(reference "U9")
 					(unit 1)
@@ -6173,10 +6113,6 @@
 		)
 		(instances
 			(project "macropad"
-				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
-					(reference "R6")
-					(unit 1)
-				)
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d/5b38d27c-d7f4-4a8d-8a5e-966bba03fead"
 					(reference "R10")
 					(unit 1)
@@ -6243,10 +6179,6 @@
 		)
 		(instances
 			(project "macropad"
-				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
-					(reference "#FLG03")
-					(unit 1)
-				)
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d/5b38d27c-d7f4-4a8d-8a5e-966bba03fead"
 					(reference "#FLG0104")
 					(unit 1)
@@ -6316,10 +6248,6 @@
 		)
 		(instances
 			(project "macropad"
-				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
-					(reference "R3")
-					(unit 1)
-				)
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d/5b38d27c-d7f4-4a8d-8a5e-966bba03fead"
 					(reference "R1")
 					(unit 1)
@@ -6387,10 +6315,6 @@
 		)
 		(instances
 			(project "macropad"
-				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
-					(reference "#FLG04")
-					(unit 1)
-				)
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d/5b38d27c-d7f4-4a8d-8a5e-966bba03fead"
 					(reference "#FLG0105")
 					(unit 1)
@@ -6457,10 +6381,6 @@
 		)
 		(instances
 			(project "macropad"
-				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
-					(reference "#PWR05")
-					(unit 1)
-				)
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d/5b38d27c-d7f4-4a8d-8a5e-966bba03fead"
 					(reference "#PWR0105")
 					(unit 1)
@@ -6623,10 +6543,6 @@
 		)
 		(instances
 			(project "macropad"
-				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
-					(reference "D2")
-					(unit 1)
-				)
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d/5b38d27c-d7f4-4a8d-8a5e-966bba03fead"
 					(reference "D3")
 					(unit 1)
@@ -6695,10 +6611,6 @@
 		)
 		(instances
 			(project "macropad"
-				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
-					(reference "D3")
-					(unit 1)
-				)
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d/5b38d27c-d7f4-4a8d-8a5e-966bba03fead"
 					(reference "D2")
 					(unit 1)
@@ -6769,10 +6681,6 @@
 		)
 		(instances
 			(project "macropad"
-				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
-					(reference "R2")
-					(unit 1)
-				)
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d/5b38d27c-d7f4-4a8d-8a5e-966bba03fead"
 					(reference "R4")
 					(unit 1)
@@ -6792,21 +6700,21 @@
 		(fields_autoplaced yes)
 		(uuid "88e6a7e2-11ab-44b3-9ad7-b6f7245e07f5")
 		(property "Reference" "C25"
-			(at 162.56 132.0799 0)
+			(at 170.18 132.0799 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
+				(justify right)
 			)
 		)
-		(property "Value" "0.1u"
-			(at 162.56 134.6199 0)
+		(property "Value" "100n"
+			(at 170.18 134.6199 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
+				(justify right)
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
@@ -6844,10 +6752,6 @@
 		)
 		(instances
 			(project "macropad"
-				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
-					(reference "C2")
-					(unit 1)
-				)
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d/5b38d27c-d7f4-4a8d-8a5e-966bba03fead"
 					(reference "C25")
 					(unit 1)
@@ -7057,10 +6961,6 @@
 		)
 		(instances
 			(project "macropad"
-				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
-					(reference "Q2")
-					(unit 1)
-				)
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d/5b38d27c-d7f4-4a8d-8a5e-966bba03fead"
 					(reference "Q2")
 					(unit 1)
@@ -7131,10 +7031,6 @@
 		)
 		(instances
 			(project "macropad"
-				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
-					(reference "C3")
-					(unit 1)
-				)
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d/5b38d27c-d7f4-4a8d-8a5e-966bba03fead"
 					(reference "C26")
 					(unit 1)
@@ -7216,10 +7112,6 @@
 		)
 		(instances
 			(project "macropad"
-				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
-					(reference "U2")
-					(unit 1)
-				)
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d/5b38d27c-d7f4-4a8d-8a5e-966bba03fead"
 					(reference "U7")
 					(unit 1)
@@ -7290,10 +7182,6 @@
 		)
 		(instances
 			(project "macropad"
-				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
-					(reference "C4")
-					(unit 1)
-				)
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d/5b38d27c-d7f4-4a8d-8a5e-966bba03fead"
 					(reference "C27")
 					(unit 1)
@@ -7360,10 +7248,6 @@
 		)
 		(instances
 			(project "macropad"
-				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
-					(reference "#FLG07")
-					(unit 1)
-				)
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d/5b38d27c-d7f4-4a8d-8a5e-966bba03fead"
 					(reference "#FLG0102")
 					(unit 1)
@@ -7378,7 +7262,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "c8568692-c212-4de9-9a3c-41ef63e3f6aa")
 		(property "Reference" "J6"
@@ -7503,10 +7387,6 @@
 		)
 		(instances
 			(project "macropad"
-				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
-					(reference "#PWR07")
-					(unit 1)
-				)
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d/5b38d27c-d7f4-4a8d-8a5e-966bba03fead"
 					(reference "#PWR0101")
 					(unit 1)
@@ -7598,10 +7478,6 @@
 		)
 		(instances
 			(project "macropad"
-				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
-					(reference "U1")
-					(unit 1)
-				)
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d/5b38d27c-d7f4-4a8d-8a5e-966bba03fead"
 					(reference "U6")
 					(unit 1)
@@ -7668,10 +7544,6 @@
 		)
 		(instances
 			(project "macropad"
-				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
-					(reference "#PWR01")
-					(unit 1)
-				)
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d/5b38d27c-d7f4-4a8d-8a5e-966bba03fead"
 					(reference "#PWR0107")
 					(unit 1)
@@ -7738,10 +7610,6 @@
 		)
 		(instances
 			(project "macropad"
-				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
-					(reference "#PWR04")
-					(unit 1)
-				)
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d/5b38d27c-d7f4-4a8d-8a5e-966bba03fead"
 					(reference "#PWR0106")
 					(unit 1)
@@ -7808,10 +7676,6 @@
 		)
 		(instances
 			(project "macropad"
-				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
-					(reference "#FLG02")
-					(unit 1)
-				)
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d/5b38d27c-d7f4-4a8d-8a5e-966bba03fead"
 					(reference "#FLG0101")
 					(unit 1)
@@ -7838,7 +7702,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "0.1u"
+		(property "Value" "100n"
 			(at 109.22 138.4299 0)
 			(effects
 				(font
@@ -7882,10 +7746,6 @@
 		)
 		(instances
 			(project "macropad"
-				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
-					(reference "C1")
-					(unit 1)
-				)
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d/5b38d27c-d7f4-4a8d-8a5e-966bba03fead"
 					(reference "C24")
 					(unit 1)
@@ -8018,10 +7878,6 @@
 		)
 		(instances
 			(project "macropad"
-				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
-					(reference "#PWR08")
-					(unit 1)
-				)
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d/5b38d27c-d7f4-4a8d-8a5e-966bba03fead"
 					(reference "#PWR0108")
 					(unit 1)
@@ -8158,10 +8014,6 @@
 		)
 		(instances
 			(project "macropad"
-				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
-					(reference "C6")
-					(unit 1)
-				)
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d/5b38d27c-d7f4-4a8d-8a5e-966bba03fead"
 					(reference "C31")
 					(unit 1)
@@ -8228,10 +8080,6 @@
 		)
 		(instances
 			(project "macropad"
-				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d"
-					(reference "#PWR03")
-					(unit 1)
-				)
 				(path "/228dc472-b306-4e5f-8dc5-2bf23eb4978d/5b38d27c-d7f4-4a8d-8a5e-966bba03fead"
 					(reference "#PWR0103")
 					(unit 1)
