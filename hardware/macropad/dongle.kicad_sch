@@ -6150,6 +6150,15 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" "RT0603FRE071K5L"
+			(at 199.39 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "66a7578e-75e9-448e-805c-be3d02fc597f")
 		)
@@ -6689,6 +6698,15 @@
 		)
 		(property "Description" "Resistor"
 			(at 43.18 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "CRCW06031M00FKEA"
+			(at 43.18 78.74 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8232,6 +8250,15 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 46.99 181.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "UMK212B7105KGHT"
 			(at 46.99 181.61 0)
 			(effects
 				(font

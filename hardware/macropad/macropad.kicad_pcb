@@ -565,7 +565,7 @@
 		(path "/5b38d27c-d7f4-4a8d-8a5e-966bba03fead/c8568692-c212-4de9-9a3c-41ef63e3f6aa")
 		(sheetname "/Power/")
 		(sheetfile "macropad_power.kicad_sch")
-		(attr through_hole)
+		(attr through_hole dnp)
 		(pad "1" thru_hole roundrect
 			(at 0 0 180)
 			(size 0.9 1.4)
@@ -1802,7 +1802,7 @@
 		(path "/161ff007-5b70-4fbf-8913-f21045552299")
 		(sheetname "/")
 		(sheetfile "macropad.kicad_sch")
-		(attr smd)
+		(attr smd dnp)
 		(fp_line
 			(start -7 -6)
 			(end -7 -7)
@@ -3897,7 +3897,7 @@
 		(path "/c8e2e721-0b7b-4706-b6f6-20188fb56f70")
 		(sheetname "/")
 		(sheetfile "macropad.kicad_sch")
-		(attr smd)
+		(attr smd dnp)
 		(fp_line
 			(start -7 -6)
 			(end -7 -7)
@@ -4709,7 +4709,7 @@
 		(path "/41f49bef-4f30-496c-9395-86f17b4df8d5")
 		(sheetname "/")
 		(sheetfile "macropad.kicad_sch")
-		(attr smd)
+		(attr smd dnp)
 		(fp_line
 			(start -7 -6)
 			(end -7 -7)
@@ -5239,7 +5239,7 @@
 		(path "/7572a5b3-ee5b-4a3e-8216-99a285d638ed")
 		(sheetname "/")
 		(sheetfile "macropad.kicad_sch")
-		(attr smd)
+		(attr smd dnp)
 		(fp_line
 			(start -7 -6)
 			(end -7 -7)
@@ -6076,7 +6076,7 @@
 		(path "/667b6152-bd4f-4e65-809f-60ee5320cd3d/b5a628b8-6cbd-4333-8da5-86ef28e835d2")
 		(sheetname "/dongle/")
 		(sheetfile "dongle.kicad_sch")
-		(attr smd)
+		(attr smd dnp)
 		(fp_rect
 			(start -5.8 3.125)
 			(end 5.8 17.875)
@@ -6676,7 +6676,7 @@
 		(path "/7dab0c6b-b8cf-4e92-bc6b-e9d1e7d0ad53")
 		(sheetname "/")
 		(sheetfile "macropad.kicad_sch")
-		(attr through_hole)
+		(attr through_hole dnp)
 		(fp_line
 			(start -0.3 -1.6)
 			(end 0.3 -1.6)
@@ -7805,7 +7805,7 @@
 		(path "/4a3999aa-10b2-47f7-b6d5-29819549e801")
 		(sheetname "/")
 		(sheetfile "macropad.kicad_sch")
-		(attr smd)
+		(attr smd dnp)
 		(fp_line
 			(start -7 -6)
 			(end -7 -7)
@@ -8682,7 +8682,7 @@
 		(path "/5b38d27c-d7f4-4a8d-8a5e-966bba03fead/671dec47-a31b-4b3c-babb-42af340ff460")
 		(sheetname "/Power/")
 		(sheetfile "macropad_power.kicad_sch")
-		(attr smd)
+		(attr smd dnp)
 		(fp_rect
 			(start -2 -11.5)
 			(end 1 -6.5)
@@ -9329,7 +9329,7 @@
 		(path "/5b38d27c-d7f4-4a8d-8a5e-966bba03fead/69a5f712-7e82-4d64-aa88-a27d225b5beb")
 		(sheetname "/Power/")
 		(sheetfile "macropad_power.kicad_sch")
-		(attr exclude_from_pos_files)
+		(attr exclude_from_pos_files dnp)
 		(fp_rect
 			(start 2.8 -1.58)
 			(end 6.4 1.58)
@@ -9477,7 +9477,7 @@
 		(path "/98726ac6-6eef-4282-af19-a9110b593c56")
 		(sheetname "/")
 		(sheetfile "macropad.kicad_sch")
-		(attr through_hole)
+		(attr through_hole dnp)
 		(pad "1" thru_hole roundrect
 			(at 0 0 270)
 			(size 0.9 1.4)
@@ -11347,7 +11347,7 @@
 		(path "/fb328550-e79c-4bb0-8c25-04e6063a49ea")
 		(sheetname "/")
 		(sheetfile "macropad.kicad_sch")
-		(attr through_hole)
+		(attr through_hole dnp)
 		(fp_line
 			(start -0.3 -1.6)
 			(end 0.3 -1.6)
@@ -11771,7 +11771,7 @@
 		(path "/8f939f0d-51f9-45c9-a56b-c3d0066c8886")
 		(sheetname "/")
 		(sheetfile "macropad.kicad_sch")
-		(attr smd)
+		(attr smd dnp)
 		(fp_line
 			(start -7 -6)
 			(end -7 -7)
@@ -12433,7 +12433,7 @@
 				)
 			)
 		)
-		(property "Value" "0.1u"
+		(property "Value" "100n"
 			(at 0 1.43 0)
 			(layer "F.Fab")
 			(uuid "5608b2e9-619b-4c6e-ba0d-ef6f0fa86843")
@@ -14576,7 +14576,7 @@
 		(path "/8069fd1d-3d83-4f83-ae53-6a4adffb6ac3")
 		(sheetname "/")
 		(sheetfile "macropad.kicad_sch")
-		(attr smd)
+		(attr smd dnp)
 		(fp_line
 			(start -7 -6)
 			(end -7 -7)
@@ -17094,7 +17094,7 @@
 		(path "/223a6712-49ff-4a8d-8d92-09d67d150c2a")
 		(sheetname "/")
 		(sheetfile "macropad.kicad_sch")
-		(attr smd)
+		(attr smd dnp)
 		(fp_line
 			(start -7 -6)
 			(end -7 -7)
@@ -18423,7 +18423,7 @@
 		(path "/35ca4939-a71e-4382-bcf1-f6bc37e53b51")
 		(sheetname "/")
 		(sheetfile "macropad.kicad_sch")
-		(attr through_hole)
+		(attr through_hole dnp)
 		(fp_line
 			(start -1.38 -1.38)
 			(end 0 -1.38)
@@ -19760,7 +19760,7 @@
 				)
 			)
 		)
-		(property "Value" "0.1u"
+		(property "Value" "100n"
 			(at 0 1.43 0)
 			(layer "F.Fab")
 			(uuid "c00df95e-2aed-4da3-bc7e-d7d8687445c7")
@@ -20807,7 +20807,7 @@
 		(path "/89a7954f-a517-4b0b-bccc-bdb72a771099")
 		(sheetname "/")
 		(sheetfile "macropad.kicad_sch")
-		(attr through_hole)
+		(attr through_hole dnp)
 		(fp_line
 			(start -1.38 9)
 			(end 1.38 9)
@@ -23016,7 +23016,7 @@
 		(path "/667b6152-bd4f-4e65-809f-60ee5320cd3d/4f32e0fa-4853-40a0-bb7b-18c8ea759857")
 		(sheetname "/dongle/")
 		(sheetfile "dongle.kicad_sch")
-		(attr through_hole)
+		(attr through_hole dnp)
 		(fp_line
 			(start -1.27 -1.27)
 			(end 0 -1.27)
@@ -24069,7 +24069,7 @@
 				)
 			)
 		)
-		(property "Value" "1.5K"
+		(property "Value" "1.5k"
 			(at 0 1.43 0)
 			(layer "F.Fab")
 			(uuid "496149df-0da6-4ce5-8de5-ec7304aa364c")
@@ -24249,7 +24249,7 @@
 		(path "/044d292f-463d-4dd1-b1d2-0cc84825412e")
 		(sheetname "/")
 		(sheetfile "macropad.kicad_sch")
-		(attr smd)
+		(attr smd dnp)
 		(fp_line
 			(start -7 -6)
 			(end -7 -7)
@@ -24923,7 +24923,7 @@
 		(path "/667b6152-bd4f-4e65-809f-60ee5320cd3d/33168862-4b0f-46ae-b7d4-03eba5381f2d")
 		(sheetname "/dongle/")
 		(sheetfile "dongle.kicad_sch")
-		(attr through_hole)
+		(attr through_hole dnp)
 		(fp_text user "${REFERENCE}"
 			(at 0.62 1.5 90)
 			(layer "B.Fab")

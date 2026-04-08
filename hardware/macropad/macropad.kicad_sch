@@ -7084,7 +7084,16 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Resistor"
+		(property "Description" "RC0805JR-0710KL"
+			(at 379.73 226.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "RC0805JR-0710KL"
 			(at 379.73 226.06 0)
 			(effects
 				(font
@@ -7565,7 +7574,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Resistor"
+		(property "Description" "RC0805JR-0710KL"
 			(at 44.45 101.6 0)
 			(effects
 				(font
@@ -7698,6 +7707,15 @@
 			)
 		)
 		(property "Description" "USB 2.0-only 16P Type-C Receptacle connector"
+			(at 355.6 157.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "U263-163N-4WS1735-XKB-5A"
 			(at 355.6 157.48 0)
 			(effects
 				(font
@@ -7944,7 +7962,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Resistor"
+		(property "Description" "RC0805JR-0710KL"
 			(at 53.34 101.6 0)
 			(effects
 				(font
@@ -8283,7 +8301,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Resistor"
+		(property "Description" "RC0805JR-0710KL"
 			(at 368.3 226.06 0)
 			(effects
 				(font
@@ -8497,7 +8515,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Resistor"
+		(property "Description" "RC0805JR-0710KL"
 			(at 375.92 226.06 0)
 			(effects
 				(font
@@ -8568,6 +8586,15 @@
 			)
 		)
 		(property "Description" "Resistor"
+			(at 387.35 153.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "RT0603FRE075K1L"
 			(at 387.35 153.67 0)
 			(effects
 				(font
@@ -9214,6 +9241,15 @@
 			)
 		)
 		(property "Description" "STMicroelectronics Arm Cortex-M3 MCU, 64KB flash, 20KB RAM, 72 MHz, 2.0-3.6V, 37 GPIO, LQFP48"
+			(at 161.29 113.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "STM32F103C8T6"
 			(at 161.29 113.03 0)
 			(effects
 				(font
@@ -10163,6 +10199,15 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" "GCM0335C1H180FA16D"
+			(at 64.77 154.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "0478cbc9-aed9-40e1-b3ab-5720d0688498")
 		)
@@ -10423,7 +10468,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Resistor"
+		(property "Description" "RC0805JR-0710KL"
 			(at 372.11 226.06 0)
 			(effects
 				(font
@@ -10896,7 +10941,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Resistor"
+		(property "Description" "RC0805JR-0710KL"
 			(at 360.68 226.06 0)
 			(effects
 				(font
@@ -11335,6 +11380,15 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" "KY-040"
+			(at 322.58 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "B"
 			(uuid "82adbf3d-674c-4b30-975e-84ad0ce5a146")
 		)
@@ -11474,7 +11528,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Resistor"
+		(property "Description" "RC0805JR-0710KL"
 			(at 364.49 226.06 0)
 			(effects
 				(font

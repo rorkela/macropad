@@ -5264,6 +5264,15 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" "AC0603FR-071KL"
+			(at 135.89 142.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "60a1bca7-029a-4d88-be29-27aa46652277")
 		)
@@ -5325,6 +5334,15 @@
 		)
 		(property "Description" "Inductor with iron core"
 			(at 285.75 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "CDRH104R 2.2uH"
+			(at 285.75 129.54 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5538,6 +5556,15 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" "TMK107BBJ225KAHT"
+			(at 292.1 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "1dda5a51-9d8c-4fe3-842e-f8b9d5ae6509")
 		)
@@ -5678,6 +5705,15 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" "AC0603FR-071K2L"
+			(at 135.89 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "d4fd2ff1-8523-4fd5-9f78-cabf8e1ccc87")
 		)
@@ -5748,6 +5784,15 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" "SI2305CDS-T1-GE3"
+			(at 96.52 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "3"
 			(uuid "762862b6-ce9c-4735-8960-db0183919892")
 		)
@@ -5773,7 +5818,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "671dec47-a31b-4b3c-babb-42af340ff460")
 		(property "Reference" "SW10"
@@ -5844,7 +5889,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "69a5f712-7e82-4d64-aa88-a27d225b5beb")
 		(property "Reference" "J8"
@@ -6028,6 +6073,15 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" "LP2992IM5-3.3/NOPB"
+			(at 264.16 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "3"
 			(uuid "42090666-3353-4176-86da-5aa08f286111")
 		)
@@ -6098,6 +6152,15 @@
 		)
 		(property "Description" "Resistor"
 			(at 170.18 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "AC0201FR-07100RL"
+			(at 170.18 129.54 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6441,6 +6504,15 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" "RT8010-33GQW"
+			(at 260.35 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "5"
 			(uuid "cfbfed1d-5eae-4ddb-bf94-5f13ed448b96")
 		)
@@ -6535,6 +6607,15 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" "17-21SURC/S530-A3/4T"
+			(at 110.49 129.54 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "f60f197c-3d62-4796-87b5-a658d1444485")
 		)
@@ -6595,6 +6676,15 @@
 			)
 		)
 		(property "Description" "Schottky diode"
+			(at 102.87 154.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "SS34"
 			(at 102.87 154.94 0)
 			(effects
 				(font
@@ -6935,6 +7025,15 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" "FS8205A"
+			(at 146.05 154.94 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "20a01746-e4b1-4022-83f8-a27ddb935f64")
 		)
@@ -7023,6 +7122,15 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" "GRT21BR61C106KE01L"
+			(at 173.99 133.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "148ba14b-dfc4-4177-a073-932c6bc546c0")
 		)
@@ -7085,6 +7193,15 @@
 		)
 		(property "Description" "Overcharge, overcurrent and overdischarge protection IC for single cell lithium-ion/polymer battery"
 			(at 145.796 130.556 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "DW01A"
+			(at 146.05 132.08 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7166,6 +7283,15 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 234.95 125.73 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "GRM188Z71C475KE21D"
 			(at 234.95 125.73 0)
 			(effects
 				(font
@@ -7442,6 +7568,15 @@
 		)
 		(property "Description" "1A Standalone Linear Li-ion/LiPo single-cell battery charger, 4.2V ±1% charge voltage, VCC = 4.0..8.0V, SOIC-8 (SOP-8)"
 			(at 126.238 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "TP4056"
+			(at 125.73 109.22 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7730,6 +7865,15 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 105.41 137.16 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "AC0603JRX7R9BB104"
 			(at 105.41 137.16 0)
 			(effects
 				(font
