@@ -5258,7 +5258,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "1c4306c5-2f5a-4cd2-8899-923bf93144c7")
 		(property "Reference" "U5"
@@ -5910,7 +5910,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+		(property "Footprint" "Capacitor_SMD:C_0201_0603Metric"
 			(at 31.4452 106.68 0)
 			(effects
 				(font
@@ -7459,7 +7459,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+		(property "Footprint" "Capacitor_SMD:C_0201_0603Metric"
 			(at 56.8452 106.68 0)
 			(effects
 				(font

@@ -8214,7 +8214,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+		(property "Footprint" "Capacitor_SMD:C_0201_0603Metric"
 			(at 40.3352 158.75 0)
 			(effects
 				(font
@@ -8971,7 +8971,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "97bfbd4c-9d60-4808-bedd-1c8b6be70679")
 		(property "Reference" "U3"
@@ -10172,7 +10172,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+		(property "Footprint" "Capacitor_SMD:C_0201_0603Metric"
 			(at 65.7352 158.75 0)
 			(effects
 				(font
