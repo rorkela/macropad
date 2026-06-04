@@ -6,7 +6,6 @@
 
 #include "font3x7.h"
 
-#define I2C I2C1
 #define SSD1306_ADDR 0x3C
 #define SSD1306_WIDTH 128
 #define SSD1306_HEIGHT 64
@@ -26,39 +25,38 @@ static void i2c_init(void) {
 	i2c_peripheral_disable(I2C1);
 	rcc_periph_reset_pulse(RST_I2C1);
 
-	i2c_set_speed(I2C, i2c_speed_sm_100k, rcc_apb1_frequency / 1000000);
-	i2c_peripheral_enable(I2C);
+	i2c_set_speed(I2C1, i2c_speed_sm_100k, rcc_apb1_frequency / 1000000);
+	i2c_peripheral_enable(I2C1);
 }
 
 static void ssd1306_command(uint8_t cmd) {
-	uint8_t data[2] = {0x00, cmd};
-	while (I2C_SR2(I2C) & I2C_SR2_BUSY);
-	i2c_send_start(I2C);
-	while (!(I2C_SR1(I2C) & I2C_SR1_SB));
-	i2c_send_7bit_address(I2C, SSD1306_ADDR, I2C_WRITE);
-	while (!(I2C_SR1(I2C) & I2C_SR1_ADDR));
-	(void)I2C_SR2(I2C);
-	i2c_send_data(I2C, data[0]);
-	while (!(I2C_SR1(I2C) & I2C_SR1_BTF));
-	i2c_send_data(I2C, data[1]);
-	while (!(I2C_SR1(I2C) & I2C_SR1_BTF));
-	i2c_send_stop(I2C);
+	while (I2C_SR2(I2C1) & I2C_SR2_BUSY);
+	i2c_send_start(I2C1);
+	while (!(I2C_SR1(I2C1) & I2C_SR1_SB));
+	i2c_send_7bit_address(I2C1, SSD1306_ADDR, I2C_WRITE);
+	while (!(I2C_SR1(I2C1) & I2C_SR1_ADDR));
+	(void)I2C_SR2(I2C1);
+	i2c_send_data(I2C1, 0x00); // Indicate command
+	while (!(I2C_SR1(I2C1) & I2C_SR1_BTF));
+	i2c_send_data(I2C1, cmd);
+	while (!(I2C_SR1(I2C1) & I2C_SR1_BTF));
+	i2c_send_stop(I2C1);
 }
 
 static void ssd1306_data(uint8_t *data, uint16_t len) {
-	while (I2C_SR2(I2C) & I2C_SR2_BUSY);
-	i2c_send_start(I2C);
-	while (!(I2C_SR1(I2C) & I2C_SR1_SB));
-	i2c_send_7bit_address(I2C, SSD1306_ADDR, I2C_WRITE);
-	while (!(I2C_SR1(I2C) & I2C_SR1_ADDR));
-	(void)I2C_SR2(I2C);
-	i2c_send_data(I2C, 0x40);
+	while (I2C_SR2(I2C1) & I2C_SR2_BUSY);
+	i2c_send_start(I2C1);
+	while (!(I2C_SR1(I2C1) & I2C_SR1_SB));
+	i2c_send_7bit_address(I2C1, SSD1306_ADDR, I2C_WRITE);
+	while (!(I2C_SR1(I2C1) & I2C_SR1_ADDR));
+	(void)I2C_SR2(I2C1);
+	i2c_send_data(I2C1, 0x40);
 	for (uint16_t i = 0; i < len; i++) {
-		while (!(I2C_SR1(I2C) & I2C_SR1_BTF));
-		i2c_send_data(I2C, data[i]);
+		while (!(I2C_SR1(I2C1) & I2C_SR1_BTF));
+		i2c_send_data(I2C1, data[i]);
 	}
-	while (!(I2C_SR1(I2C) & I2C_SR1_BTF));
-	i2c_send_stop(I2C);
+	while (!(I2C_SR1(I2C1) & I2C_SR1_BTF));
+	i2c_send_stop(I2C1);
 }
 
 static void ssd1306_init(void) {

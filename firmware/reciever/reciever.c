@@ -204,10 +204,10 @@ static uint8_t spi_transfer(uint8_t data)
 
 static void nrf24_write_reg(uint8_t reg, uint8_t value)
 {
-	nrf24_csn_low();
+	gpio_clear(NRF24_CSN_PORT, NRF24_CSN_PIN);
 	spi_transfer(NRF24_CMD_WRITE_REG | reg);
 	spi_transfer(value);
-	nrf24_csn_high();
+	gpio_set(NRF24_CSN_PORT, NRF24_CSN_PIN);
 }
 
 static uint8_t nrf24_read_reg(uint8_t reg)

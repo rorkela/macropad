@@ -1,4 +1,6 @@
+#include <stdint.h>
 #include <stdlib.h>
+#include <string.h>
 #include <libopencm3/cm3/nvic.h>
 #include <libopencm3/cm3/systick.h>
 #include <libopencm3/stm32/rcc.h>
@@ -8,6 +10,7 @@
 #include <libopencm3/usb/dfu.h>
 #include <libopencm3/cm3/scb.h>
 #include <libopencm3/stm32/flash.h>
+#include <libopencm3/stm32/timer.h>
 
 typedef struct {
 	struct usb_hid_descriptor hid_descriptor;
@@ -238,6 +241,45 @@ static enum usbd_request_return_codes control_request(usbd_device *dev, struct u
 
 #define DFU_FLAG_PAGE 0x08010000
 
+typedef enum {
+	SW_1,
+	SW_2,
+	SW_3,
+	SW_4,
+	SW_5,
+	SW_6,
+	SW_7,
+	SW_8,
+	SW_9,
+} switch_id_t;
+
+typedef struct {
+	uint32_t port;
+	uint16_t pin;
+	bool is_pressed;
+	uint8_t counter;
+	uint8_t keycode;
+} switch_t;
+
+#define NUM_SWITCHES 9
+
+static switch_t switches[NUM_SWITCHES] = {
+	[SW_1] = {GPIOB, GPIO3, false, 0, 0x04},
+	[SW_2] = {GPIOB, GPIO4, false, 0, 0x05},
+	[SW_3] = {GPIOB, GPIO5, false, 0, 0x06},
+	[SW_4] = {GPIOB, GPIO8, false, 0, 0x07},
+	[SW_5] = {GPIOB, GPIO9, false, 0, 0x08},
+	[SW_6] = {GPIOB, GPIO11, false, 0, 0x09},
+	[SW_7] = {GPIOB, GPIO12, false, 0, 0x0a},
+	[SW_8] = {GPIOB, GPIO13, false, 0, 0x0b},
+	[SW_9] = {GPIOB, GPIO14, false, 0, 0x0c},
+};
+
+static switch_t enc_buttons[2] = {
+	{GPIOA, GPIO10, false, 0, 0x0d},
+	{GPIOA, GPIO2, false, 0, 0x0e}
+};
+
 static void dfu_detach_complete(usbd_device *dev, struct usb_setup_data *req)
 {
 	(void)req;
@@ -289,14 +331,84 @@ static void set_config(usbd_device *dev, uint16_t wValue)
 				dfu_control_request);
 
 	systick_set_clocksource(STK_CSR_CLKSOURCE_AHB_DIV8);
-	systick_set_reload(99999);
+	systick_set_reload(8999);
 	systick_interrupt_enable();
 	systick_counter_enable();
 }
 
+static uint16_t last_enc1_value = 0;
+static uint16_t last_enc2_value = 0;
+
+void encoder_init() {
+	rcc_periph_clock_enable(RCC_GPIOA);
+
+	rcc_periph_clock_enable(RCC_TIM1);
+	rcc_periph_clock_enable(RCC_TIM2);
+
+	gpio_set_mode(GPIOA, GPIO_MODE_INPUT, GPIO_CNF_INPUT_FLOAT, GPIO0 | GPIO1);
+	gpio_set_mode(GPIOA, GPIO_MODE_INPUT, GPIO_CNF_INPUT_FLOAT, GPIO8 | GPIO9);
+
+	timer_set_period(TIM1, 0xFFFF);
+
+	timer_ic_set_filter(TIM1, TIM_IC1, TIM_IC_CK_INT_N_8);
+	timer_ic_set_filter(TIM1, TIM_IC2, TIM_IC_CK_INT_N_8);
+
+	timer_ic_set_polarity(TIM1, TIM_IC1, TIM_IC_FALLING);
+	timer_ic_set_polarity(TIM1, TIM_IC2, TIM_IC_FALLING);
+
+	timer_slave_set_mode(TIM1, TIM_SMCR_SMS_EM3);
+	timer_enable_counter(TIM1);
+
+	timer_set_period(TIM2, 0xFFFF);
+
+	timer_ic_set_filter(TIM2, TIM_IC1, TIM_IC_CK_INT_N_8);
+	timer_ic_set_filter(TIM2, TIM_IC2, TIM_IC_CK_INT_N_8);
+
+	timer_ic_set_polarity(TIM2, TIM_IC1, TIM_IC_FALLING);
+	timer_ic_set_polarity(TIM2, TIM_IC2, TIM_IC_FALLING);
+
+	timer_slave_set_mode(TIM2, TIM_SMCR_SMS_EM3);
+	timer_enable_counter(TIM2);
+
+	last_enc1_value = timer_get_counter(TIM1);
+	last_enc2_value = timer_get_counter(TIM2);
+}
+
+int16_t get_encoder_value(int timer_peripheral) {
+	uint16_t current_val = timer_get_counter(timer_peripheral);
+	int16_t delta = 0;
+
+	switch (timer_peripheral) {
+		case TIM1:
+			delta = (int16_t)(current_val - last_enc1_value);
+			last_enc1_value = current_val;
+			return delta;
+		case TIM2:
+			delta = (int16_t)(current_val - last_enc2_value);
+			last_enc2_value = current_val;
+			return delta;
+		default:
+			return 0;
+	}
+}
+
+void switches_init(void) {
+	rcc_periph_clock_enable(RCC_GPIOA);
+	rcc_periph_clock_enable(RCC_GPIOB);
+
+	for(int i = 0; i < NUM_SWITCHES; i++) {
+		gpio_set_mode(switches[i].port, GPIO_MODE_INPUT, GPIO_CNF_INPUT_PULL_UPDOWN, switches[i].pin);
+		gpio_set(switches[i].port, switches[i].pin);
+	}
+
+	for(int i = 0; i < 2; i++) {
+		gpio_set_mode(enc_buttons[i].port, GPIO_MODE_INPUT, GPIO_CNF_INPUT_FLOAT, enc_buttons[i].pin);
+	}
+}
+
 int main(void)
 {
-	rcc_clock_setup_pll(&rcc_hsi_configs[RCC_CLOCK_HSI_48MHZ]);
+	rcc_clock_setup_pll(&rcc_hse_configs[RCC_CLOCK_HSE8_72MHZ]);
 
 	rcc_periph_clock_enable(RCC_GPIOA);
 	gpio_set_mode(GPIOA, GPIO_MODE_OUTPUT_2_MHZ,
@@ -306,6 +418,9 @@ int main(void)
 		__asm__("nop");
 	}
 
+	encoder_init();
+	switches_init();
+
 	usbd_dev = usbd_init(&st_usbfs_v1_usb_driver, &dev_descr, &config, usb_strings, 3, usbd_control_buffer, sizeof(usbd_control_buffer));
 	usbd_register_set_config_callback(usbd_dev, set_config);
 
@@ -313,30 +428,74 @@ int main(void)
 		usbd_poll(usbd_dev);
 }
 
+#define DEBOUNCE_TIME 10
+
 void sys_tick_handler(void)
 {
-	static uint16_t ticks = 0;
 	uint8_t report1[14] = {0};
 	uint8_t report2[1] = {0};
 
-	ticks++;
+	for(int i = 0; i < NUM_SWITCHES; i++) {
+		bool raw = (gpio_get(switches[i].port, switches[i].pin) == 0);
 
-	if(ticks > 1) {
-		ticks = 0;
+		if(raw != switches[i].is_pressed) {
+			switches[i].counter++;
+			if(switches[i].counter >= DEBOUNCE_TIME) {
+				switches[i].is_pressed = raw;
+				switches[i].counter = 0;
+			}
+		} else {
+			switches[i].counter = 0;
+		}
 
-		report1[1] = 0xF0;
-		report1[2] = 0xFF;
-		report1[3] = 0xFF;
-		report1[4] = 0x3F;
-		report1[6] = (1 << 0x04);
-		report2[0] = 0x00;
-
-		usbd_ep_write_packet(usbd_dev, 0x81, report1, 14);
-		usbd_ep_write_packet(usbd_dev, 0x82, report2, 1);
-		return;
+		if(switches[i].is_pressed) {
+			uint8_t key = switches[i].keycode;
+			uint8_t byte = 1 + (key / 8);
+			uint8_t bit = key % 8;
+			report1[byte] |= (1 << bit);
+		}
 	}
-	report1[1] = 0x00;
-	report2[0] = 0x00;
-	usbd_ep_write_packet(usbd_dev, 0x81, report1, 14);
-	usbd_ep_write_packet(usbd_dev, 0x82, report2, 1);
+
+	for(int i = 0; i < 2; i++) {
+		bool raw = (gpio_get(enc_buttons[i].port, enc_buttons[i].pin) == 0);
+
+		if(raw != enc_buttons[i].is_pressed) {
+			switches[i].counter++;
+			if(enc_buttons[i].counter >= DEBOUNCE_TIME) {
+				enc_buttons[i].is_pressed = raw;
+				enc_buttons[i].counter = 0;
+			}
+		} else {
+			enc_buttons[i].counter = 0;
+		}
+
+		if(enc_buttons[i].is_pressed) {
+			uint8_t key = enc_buttons[i].keycode;
+			uint8_t byte = 1 + (key / 8);
+			uint8_t bit = key % 8;
+			report1[byte] |= (1 << bit);
+		}
+	}
+
+	int16_t enc1_delta = get_encoder_value(TIM1);
+	int16_t enc2_delta = get_encoder_value(TIM2);
+
+	if(enc1_delta > 0)      report2[0] = 0xE9;
+	else if(enc1_delta < 0) report2[0] = 0xEA;
+	else if(enc2_delta > 0) report2[0] = 0xE9;
+	else if(enc2_delta < 0) report2[0] = 0xEA;
+	else					report2[0] = 0x00;
+
+	static uint8_t prev_report1[14] = {0};
+	static uint8_t prev_report2[1] = {0};
+
+	if (memcmp(report1, prev_report1, 14) != 0) {
+		usbd_ep_write_packet(usbd_dev, 0x81, report1, 14);
+		memcpy(prev_report1, report1, 14);
+	}
+
+	if (memcmp(report2, prev_report2, 1) != 0) {
+		usbd_ep_write_packet(usbd_dev, 0x82, report2, 1);
+		memcpy(prev_report2, report2, 1);
+	}
 }
