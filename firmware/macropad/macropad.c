@@ -395,6 +395,9 @@ int16_t get_encoder_value(int timer_peripheral) {
 void switches_init(void) {
 	rcc_periph_clock_enable(RCC_GPIOA);
 	rcc_periph_clock_enable(RCC_GPIOB);
+	rcc_periph_clock_enable(RCC_AFIO);
+
+	gpio_primary_remap(AFIO_MAPR_SWJ_CFG_JTAG_OFF_SW_ON, 0);
 
 	for(int i = 0; i < NUM_SWITCHES; i++) {
 		gpio_set_mode(switches[i].port, GPIO_MODE_INPUT, GPIO_CNF_INPUT_PULL_UPDOWN, switches[i].pin);
@@ -429,6 +432,16 @@ int main(void)
 }
 
 #define DEBOUNCE_TIME 10
+#define ENCODER_HOLD_TIME 30
+
+static uint8_t prev_report1[14] = {0};
+static uint8_t prev_report2[1] = {0};
+
+static uint16_t enc1_hold_timer = 0;
+static uint16_t enc2_hold_timer = 0;
+
+static uint8_t enc1_active_key = 0;
+static uint8_t enc2_active_key = 0;
 
 void sys_tick_handler(void)
 {
@@ -460,7 +473,7 @@ void sys_tick_handler(void)
 		bool raw = (gpio_get(enc_buttons[i].port, enc_buttons[i].pin) == 0);
 
 		if(raw != enc_buttons[i].is_pressed) {
-			switches[i].counter++;
+			enc_buttons[i].counter++;
 			if(enc_buttons[i].counter >= DEBOUNCE_TIME) {
 				enc_buttons[i].is_pressed = raw;
 				enc_buttons[i].counter = 0;
@@ -480,14 +493,37 @@ void sys_tick_handler(void)
 	int16_t enc1_delta = get_encoder_value(TIM1);
 	int16_t enc2_delta = get_encoder_value(TIM2);
 
-	if(enc1_delta > 0)      report2[0] = 0xE9;
-	else if(enc1_delta < 0) report2[0] = 0xEA;
-	else if(enc2_delta > 0) report2[0] = 0xE9;
-	else if(enc2_delta < 0) report2[0] = 0xEA;
-	else					report2[0] = 0x00;
+	if (enc1_delta > 0) {
+		enc1_active_key = 0xE9;
+		enc1_hold_timer = ENCODER_HOLD_TIME;
+	} else if (enc1_delta < 0) {
+		enc1_active_key = 0xEA;
+		enc1_hold_timer = ENCODER_HOLD_TIME;
+	} else if (enc1_hold_timer > 0) {
+		enc1_hold_timer--;
+	} else {
+		enc1_active_key = 0x00;
+	}
 
-	static uint8_t prev_report1[14] = {0};
-	static uint8_t prev_report2[1] = {0};
+	if (enc2_delta > 0) {
+		enc2_active_key = 0xE9;
+		enc2_hold_timer = ENCODER_HOLD_TIME;
+	} else if (enc2_delta < 0) {
+		enc2_active_key = 0xEA;
+		enc2_hold_timer = ENCODER_HOLD_TIME;
+	} else if (enc2_hold_timer > 0) {
+		enc2_hold_timer--;
+	} else {
+		enc2_active_key = 0x00;
+	}
+
+	if (enc1_active_key != 0x00) {
+		report2[0] = enc1_active_key;
+	} else if (enc2_active_key != 0x00) {
+		report2[0] = enc2_active_key;
+	} else {
+		report2[0] = 0x00;
+	}
 
 	if (memcmp(report1, prev_report1, 14) != 0) {
 		usbd_ep_write_packet(usbd_dev, 0x81, report1, 14);
