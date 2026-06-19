@@ -1,104 +1,92 @@
-ifneq ($(V),1)
-Q		:= @
+######################################################
+# Stuff to define in per module Makefile (if needed) #
+######################################################
+
+# LIB_NAME and its corresponding DEFS are necessary based on what you are building for
+# PROJECT is necesary for the output name
+
+SRC_DIR  ?= src
+INC_DIR  ?= include
+LDSCRIPT ?= $(PROJECT).ld
+
+OOCD           ?= openocd
+OOCD_INTERFACE ?= stlink
+OOCD_TARGET    ?= stm32f1x
+
+FP_FLAGS   ?= -msoft-float
+ARCH_FLAGS ?= -mthumb -mcpu=cortex-m3 $(FP_FLAGS) -mfix-cortex-m3-ldrd
+
+###############
+# Dont change #
+###############
+
+V?=0
+ifeq ($(V),0)
+Q	:= @
 NULL	:= 2>/dev/null
 endif
 
-###############################################################################
-# Executables
+PREFIX  ?= arm-none-eabi-
 
-PREFIX	?= arm-none-eabi-
+BUILD_DIR  ?= build
+OUTPUT_DIR ?= bin
 
-CC		:= $(PREFIX)gcc
-LD		:= $(PREFIX)gcc
-OBJCOPY	:= $(PREFIX)objcopy
-OPT		:= -Os
-DEBUG	:= -ggdb3
-CSTD	?= -std=c99
+CC      := $(PREFIX)gcc
+LD      := $(PREFIX)gcc
+OBJCOPY := $(PREFIX)objcopy
+OBJDUMP := $(PREFIX)objdump
 
-OUTPUT_DIR ?= ./bin
-BUILD_DIR ?= ./build
+OPT  ?= -Os
+CSTD ?= -std=c99
 
-###############################################################################
-# Source files
+INCLUDES    += -I$(OPENCM3_INC) -I$(SRC_DIR) -I$(INC_DIR)
 
-OBJS		+= $(BUILD_DIR)/$(BINARY).o
+ROOT_DIR    := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
+OPENCM3_DIR := $(ROOT_DIR)/libopencm3
+OPENCM3_INC := $(OPENCM3_DIR)/include
 
-LDFLAGS		+= -L$(OPENCM3_DIR)/lib
-LDLIBS		+= -l$(LIBNAME)
-LDSCRIPT	?= $(BINARY).ld
+CFILES := $(wildcard $(SRC_DIR)/*.c)
+OBJS := $(CFILES:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)
 
-ifeq (,$(wildcard $(OPENCM3_DIR)))
-$(error OPENCM3_DIR '$(OPENCM3_DIR)' is not a valid directory)
-endif
+OPENCM3_LIB := $(OPENCM3_DIR)/lib/lib$(LIBNAME).a
 
-ifeq (,$(wildcard $(OPENCM3_DIR)/lib/lib$(LIBNAME).a))
-$(error LIBNAME '$(LIBNAME).a' not found)
-endif
-
-###############################################################################
-# C flags
-
-TGT_CFLAGS	+= $(OPT) $(CSTD) $(DEBUG)
+TGT_CFLAGS	+= $(OPT) $(CSTD) -ggdb3
 TGT_CFLAGS	+= $(ARCH_FLAGS)
 TGT_CFLAGS	+= -Wextra -Wshadow -Wimplicit-function-declaration
 TGT_CFLAGS	+= -Wredundant-decls -Wmissing-prototypes -Wstrict-prototypes
+TGT_CFLAGS	+= -Wall -Wundef
+TGT_CFLAGS	+= $(DEFS)
 TGT_CFLAGS	+= -fno-common -ffunction-sections -fdata-sections
 
-###############################################################################
-# C++ flags
-
-TGT_CXXFLAGS	+= $(OPT) $(CXXSTD) $(DEBUG)
-TGT_CXXFLAGS	+= $(ARCH_FLAGS)
-TGT_CXXFLAGS	+= -Wextra -Wshadow -Wredundant-decls  -Weffc++
-TGT_CXXFLAGS	+= -fno-common -ffunction-sections -fdata-sections
-
-###############################################################################
-# C & C++ preprocessor common flags
-
-TGT_CPPFLAGS	+= -MD
-TGT_CPPFLAGS	+= -Wall -Wundef
-TGT_CPPFLAGS	+= $(DEFS)
-
-###############################################################################
-# Linker flags
-
 TGT_LDFLAGS		+= --static -nostartfiles
-TGT_LDFLAGS		+= -T$(LDSCRIPT)
-TGT_LDFLAGS		+= $(ARCH_FLAGS) $(DEBUG)
-TGT_LDFLAGS		+= -Wl,-Map=$(BUILD_DIR)/$(BINARY).map -Wl,--cref
+TGT_LDFLAGS		+= -T$(LDSCRIPT) -L$(OPENCM3_DIR)/lib
+TGT_LDFLAGS		+= $(ARCH_FLAGS)
 TGT_LDFLAGS		+= -Wl,--gc-sections
 ifeq ($(V),99)
 TGT_LDFLAGS		+= -Wl,--print-gc-sections
 endif
 
-###############################################################################
-# Used libraries
+LDLIBS		+= -Wl,--start-group -l$(LIBNAME) -lc -lgcc -lnosys -Wl,--end-group
 
-LDLIBS		+= -Wl,--start-group -lc -lgcc -lnosys -Wl,--end-group
+all: elf bin
 
-###############################################################################
-###############################################################################
-###############################################################################
-
-all: bin
-
-elf: $(OUTPUT_DIR)/$(BINARY).elf
-bin: $(OUTPUT_DIR)/$(BINARY).bin
-flash: $(BINARY).flash
+elf: $(OUTPUT_DIR)/$(PROJECT).elf
+bin: $(OUTPUT_DIR)/$(PROJECT).bin
+flash: $(PROJECT).flash
 
 $(OUTPUT_DIR)/%.bin: $(OUTPUT_DIR)/%.elf
 	@#printf "  OBJCOPY $(*).bin\n"
-	$(Q)$(OBJCOPY) -Obinary $< $@
+	$(Q)$(OBJCOPY) -O binary $< $@
 
-$(OUTPUT_DIR)/%.elf: $(OBJS) $(LDSCRIPT) $(OPENCM3_DIR)/lib/lib$(LIBNAME).a
+$(OUTPUT_DIR)/$(PROJECT).elf: $(OBJS) $(LDSCRIPT) $(OPENCM3_LIB)
 	@#printf "  CC      $(*).elf\n"
 	$(Q)mkdir -p $(OUTPUT_DIR)
 	$(Q)$(LD) $(TGT_LDFLAGS) $(LDFLAGS) $(OBJS) $(LDLIBS) -o $@
 
-$(BUILD_DIR)/%.o: %.c
+$(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
 	@#printf "  CC      $(*).c\n"
 	$(Q)mkdir -p $(BUILD_DIR)
-	$(Q)$(CC) $(TGT_CFLAGS) $(CFLAGS) $(TGT_CPPFLAGS) $(CPPFLAGS) -o $@ -c $<
+	$(Q)$(CC) $(TGT_CFLAGS) $(CFLAGS) -o $@ -c $<
 
 clean:
 	@#printf "  CLEAN\n"

@@ -3,4 +3,6 @@ PROJECT := macropad
 LIBNAME := opencm3_stm32f1
 DEFS    += -DSTM32F1
 
-include ../rules.mk
+SRC_DIR := .
+
+include ../../rules.mk
