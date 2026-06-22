@@ -33,3 +33,4 @@ bin/
 build/
 .clangd
 .mxproject
+compile_commands.json
