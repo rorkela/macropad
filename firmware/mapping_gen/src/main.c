@@ -6,14 +6,22 @@
 #include "defs.h"
 #include "keys.h"
 
+const usb_keycode_t layer0_keys[NUM_KEYS] = {
+	KEY_0, KEY_1, KEY_2, KEY_3, KEY_4, KEY_5, KEY_6, KEY_7, KEY_8
+};
+
+const usb_keycode_t layer1_keys[NUM_KEYS] = {
+	KEY_A, KEY_B, KEY_C, KEY_D, KEY_E, KEY_F, KEY_G, KEY_H, KEY_I
+};
+
 void set_key_action(usb_action_t* action, uint8_t modifiers, usb_keycode_t hid_keycode) {
 	action->usb_type = USB_TYPE_KEY;
 	memset(action->payload, 0, PAYLOAD_SIZE);
 	action->payload[0] = modifiers;
 
 	uint8_t byte_idx = ((hid_keycode >> 8) & 0xFF) + 1;
-	uint8_t bit_pos  = hid_keycode & 0xFF;
-	action->payload[byte_idx] |= (1 << bit_pos);
+	uint8_t val  = hid_keycode & 0xFF;
+	action->payload[byte_idx] |= val;
 }
 
 void set_consumer_action(usb_action_t* action, usb_consumer_t consumer_code) {
@@ -41,7 +49,7 @@ int main(void) {
 
 	for(int k = 0; k < NUM_KEYS; k++) {
 		snprintf(layer0->binding_names[k], MAX_BINDING_NAME, "K%d", k + 1);
-		set_key_action(&layer0->actions[k], 0, KEY_0 + k);
+		set_key_action(&layer0->actions[k], 0, layer1_keys[k]);
 	}
 
 	strncpy(layer0->binding_names[9], "VOL-", MAX_BINDING_NAME);
@@ -56,7 +64,7 @@ int main(void) {
 
 	for(int k = 0; k < NUM_KEYS; k++) {
 		snprintf(layer1->binding_names[k], MAX_BINDING_NAME, "K%d", k + 1);
-		set_key_action(&layer1->actions[k], 0, KEY_A + k);
+		set_key_action(&layer1->actions[k], 0, layer1_keys[k]);
 	}
 
 	strncpy(layer1->binding_names[9], "BRT-", MAX_BINDING_NAME);

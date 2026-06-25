@@ -14,7 +14,6 @@
 
 #include "dfu.h"
 #include "defs.h"
-#include "libopencm3/usb/usbstd.h"
 
 static usbd_device *usbd_dev;
 
@@ -84,12 +83,13 @@ const struct usb_interface_descriptor altsettings_list[] = {
 	app_iface, mapping_iface
 };
 
+static uint8_t current_altsetting = 0;
+
 const struct usb_interface ifaces_dev[] = {{
 	.num_altsetting = 2,
+	.cur_altsetting = &current_altsetting,
 	.altsetting = altsettings_list,
 }};
-
-static uint8_t current_altsetting = 0;
 
 const struct usb_config_descriptor config_dev = {
 	.bLength = USB_DT_CONFIGURATION_SIZE,
@@ -254,12 +254,6 @@ static enum usbd_request_return_codes control_request(
 	return USBD_REQ_HANDLED;
 }
 
-static void set_altsetting(usbd_device *dev, uint16_t wIndex, uint16_t wValue)
-{
-	(void)dev;
-	if(wIndex == 0) current_altsetting = wValue;
-}
-
 static void set_config(usbd_device *dev, uint16_t wValue)
 {
 	(void)wValue;
@@ -270,8 +264,6 @@ static void set_config(usbd_device *dev, uint16_t wValue)
 			USB_REQ_TYPE_CLASS | USB_REQ_TYPE_INTERFACE,
 			USB_REQ_TYPE_TYPE | USB_REQ_TYPE_RECIPIENT,
 			control_request);
-
-	usbd_register_set_altsetting_callback(dev, set_altsetting);
 }
 
 void dfu_init(void) {
