@@ -167,7 +167,7 @@ void input_poll(void)
 			control_handle_enc_press(i, state);
 		}
 		if(enc_rot[i].changed) {
-			uint8_t dir;
+			int8_t dir;
 
 			CM_ATOMIC_BLOCK() {
 				enc_rot[i].changed = false;

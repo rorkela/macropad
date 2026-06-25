@@ -262,8 +262,8 @@ static void dfu_detach_complete(usbd_device *dev, struct usb_setup_data *req)
 	usbd_disconnect(dev, 1);
 
 	flash_unlock();
-	uint16_t retain = 0x0000;
-	flash_program_half_word(LAST_PAGE, retain);
+	flash_erase_page(LAST_PAGE);
+	flash_program_word(LAST_PAGE, (uint32_t)MAGIC);
 	flash_lock();
 
 	scb_reset_system();
@@ -336,17 +336,12 @@ void usb_run(void)
 		usbd_poll(usbd_dev);
 }
 
-void usb_send(usb_action_t action, bool pressed)
+void usb_send_key(const uint8_t* payload)
 {
-	switch (action.usb_type)
-	{
-		case USB_TYPE_KEY:
-			usbd_ep_write_packet(usbd_dev, 0x81, action.payload, 14);
-			break;
-		case USB_TYPE_CNTRL:
-			usbd_ep_write_packet(usbd_dev, 0x82, action.payload, 1);
-			break;
-		default:
-			break;
-	}
+	usbd_ep_write_packet(usbd_dev, 0x81, payload, PAYLOAD_SIZE);
+}
+
+void usb_send_cntrl(const uint8_t* payload)
+{
+	usbd_ep_write_packet(usbd_dev, 0x82, payload, 1);
 }

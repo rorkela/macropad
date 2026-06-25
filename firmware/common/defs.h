@@ -4,6 +4,7 @@
 
 #define MAGIC 0x87AD91B2
 
+#define FLASH_BASE 0x08000000
 #define MAPPINGS_ADDR 0x08007800
 
 #define MAX_LAYER_NAME 6
@@ -27,8 +28,8 @@ typedef struct __attribute__((packed)) {
 
 typedef struct __attribute__((packed)) {
 	char layer_name[MAX_LAYER_NAME];
-	char binding_names[NUM_KEYS + 2 * NUM_ENCODERS + (NUM_ENCODERS - 1)][MAX_BINDING_NAME];
-	usb_action_t actions[NUM_KEYS + NUM_ENCODERS];
+	char binding_names[NUM_KEYS + 2 * (NUM_ENCODERS - 1)][MAX_BINDING_NAME];
+	usb_action_t actions[NUM_KEYS + (NUM_ENCODERS - 1)];
 } macro_layer_t;
 
 typedef struct __attribute__((packed)) {
@@ -36,4 +37,4 @@ typedef struct __attribute__((packed)) {
 	uint8_t total_layers;
 	uint8_t reserved[3];
 	macro_layer_t layers[];
-} flash_layout_header_t;
+} mappings_t;
