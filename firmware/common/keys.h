@@ -133,8 +133,7 @@ typedef enum {
 	MEDIA_STOP           = 0xB7,
 	MEDIA_PLAY_PAUSE     = 0xCD,
 
-	// SYS_LAUNCH_BROWSER   = 0x223,
-	// SYS_LAUNCH_CALC      = 0x192,
-	// SYS_LAUNCH_MAIL      = 0x18A,
+	DISPLAY_BRIGHTNESS_UP   = 0x6F,
+	DISPLAY_BRIGHTNESS_DOWN = 0x70,
 } usb_consumer_t;
 
