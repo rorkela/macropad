@@ -2,6 +2,7 @@
 #include <stddef.h>
 
 #include "defs.h"
+#include "display.h"
 #include "control.h"
 #include "usb.h"
 
@@ -66,6 +67,9 @@ void control_handle_key_event(uint8_t key, bool pressed)
 {
 	if(key >= NUM_KEYS)
 		return;
+
+	char str[] = "Key prsd!\0";
+	display_string(0, 2, str);
 
 	const usb_action_t* action = &current_layer->actions[key];
 

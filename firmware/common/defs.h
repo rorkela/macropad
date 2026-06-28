@@ -4,7 +4,9 @@
 
 #define MAGIC 0x87AD91B2
 
+#ifndef FLASH_BASE
 #define FLASH_BASE 0x08000000
+#endif
 #define MAPPINGS_ADDR 0x08007800
 
 #define MAX_LAYER_NAME 6

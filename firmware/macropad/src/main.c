@@ -6,6 +6,7 @@
 #include <stdint.h>
 
 #include "control.h"
+#include "display.h"
 #include "defs.h"
 #include "input.h"
 #include "usb.h"
@@ -31,8 +32,15 @@ int main(void)
 		scb_reset_system();
 	}
 
+	display_init();
+	display_string(0, 0, "Test");
+
 	usb_init();
 	input_init();
 
-	usb_run();
+	while(1)
+	{
+		input_poll();
+		usb_run();
+	}
 }

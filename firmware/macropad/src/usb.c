@@ -293,7 +293,7 @@ static void set_config(usbd_device *dev, uint16_t wValue)
 	(void)wValue;
 	(void)dev;
 
-	usbd_ep_setup(dev, 0x81, USB_ENDPOINT_ATTR_INTERRUPT, 14, NULL);
+	usbd_ep_setup(dev, 0x81, USB_ENDPOINT_ATTR_INTERRUPT, PAYLOAD_SIZE, NULL);
 	usbd_ep_setup(dev, 0x82, USB_ENDPOINT_ATTR_INTERRUPT, 1, NULL);
 
 	usbd_register_control_callback(
@@ -332,8 +332,7 @@ void usb_init(void)
 
 void usb_run(void)
 {
-	while(1)
-		usbd_poll(usbd_dev);
+	usbd_poll(usbd_dev);
 }
 
 void usb_send_key(const uint8_t* payload)
@@ -342,6 +341,6 @@ void usb_send_key(const uint8_t* payload)
 }
 
 void usb_send_cntrl(const uint8_t* payload)
-{
+ {
 	usbd_ep_write_packet(usbd_dev, 0x82, payload, 1);
 }
