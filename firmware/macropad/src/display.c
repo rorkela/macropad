@@ -6,6 +6,7 @@
 #include <libopencm3/stm32/gpio.h>
 
 #include "display.h"
+#include "time.h"
 
 #include "font3x7.h"
 
@@ -130,11 +131,9 @@ static void ssd1306_clear(void) {
 	memset(display_buffer, 0, sizeof(display_buffer));
 }
 
-static void ssd1306_update(void) {
-	for (uint8_t page = 0; page < 8; page++) {
-		ssd1306_set_pos(0, page);
-		ssd1306_data(&display_buffer[page * 128], 128);
-	}
+static void ssd1306_update(uint8_t page) {
+	ssd1306_set_pos(0, page);
+	ssd1306_data(&display_buffer[page * 128], 128);
 }
 
 static void ssd1306_char(uint8_t x, uint8_t y, char c) {
@@ -155,6 +154,9 @@ static void ssd1306_string(uint8_t x, uint8_t y, const char *str) {
 	}
 }
 
+static uint32_t last_display_millis = 0;
+static uint8_t current_page = 0;
+
 void display_init(void) {
 	rcc_apb1_frequency = 72000000;
 	rcc_apb2_frequency = 72000000;
@@ -162,6 +164,8 @@ void display_init(void) {
 	i2c_init();
 	ssd1306_init();
 	ssd1306_clear();
+
+	last_display_millis = get_millis();
 }
 
 void display_clear(void) {
@@ -170,12 +174,10 @@ void display_clear(void) {
 
 void display_char(uint8_t x, uint8_t y, char c) {
 	ssd1306_char(x, y, c);
-	ssd1306_update();
 }
 
 void display_string(uint8_t x, uint8_t y, const char *str) {
 	ssd1306_string(x, y, str);
-	ssd1306_update();
 }
 
 void display_get_screen_size(uint8_t* width, uint8_t* height) {
@@ -184,5 +186,11 @@ void display_get_screen_size(uint8_t* width, uint8_t* height) {
 }
 
 void display_update(void) {
-	ssd1306_update();
+	uint32_t current_time_millis = get_millis();
+	if(current_time_millis - last_display_millis > 5) {
+		last_display_millis = current_time_millis;
+		ssd1306_update(current_page);
+		current_page++;
+		if(current_page >= 8) current_page = 0;
+	}
 }

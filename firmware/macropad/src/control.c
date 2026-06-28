@@ -68,9 +68,6 @@ void control_handle_key_event(uint8_t key, bool pressed)
 	if(key >= NUM_KEYS)
 		return;
 
-	char str[] = "Key prsd!\0";
-	display_string(0, 2, str);
-
 	const usb_action_t* action = &current_layer->actions[key];
 
 	const uint8_t* payload;

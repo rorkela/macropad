@@ -5,9 +5,9 @@
 #include <libopencm3/cm3/scb.h>
 #include <stdint.h>
 
+#include "defs.h"
 #include "control.h"
 #include "display.h"
-#include "defs.h"
 #include "input.h"
 #include "usb.h"
 
@@ -33,7 +33,7 @@ int main(void)
 	}
 
 	display_init();
-	display_string(0, 0, "Test");
+	display_char(0, 0, 'T');
 
 	usb_init();
 	input_init();
@@ -41,6 +41,7 @@ int main(void)
 	while(1)
 	{
 		input_poll();
+		display_update();
 		usb_run();
 	}
 }

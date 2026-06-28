@@ -9,6 +9,7 @@
 #include <libopencm3/stm32/timer.h>
 
 #include "defs.h"
+#include "time.h"
 #include "input.h"
 #include "control.h"
 
@@ -135,100 +136,67 @@ void input_init(void)
 	encoder_init();
 	switches_init();
 
-	systick_set_clocksource(STK_CSR_CLKSOURCE_AHB_DIV8);
-	systick_set_reload(8999);
+	systick_set_clocksource(STK_CSR_CLKSOURCE_AHB);
+	systick_set_frequency(1000, 72000000);
 	systick_interrupt_enable();
 	systick_counter_enable();
-}
-
-void input_poll(void)
-{
-	for(int i = 0; i < NUM_KEYS; i++) {
-		if(switches[i].changed) {
-			bool state;
-
-			CM_ATOMIC_BLOCK() {
-				switches[i].changed = false;
-				state = switches[i].is_pressed;
-			}
-			control_handle_key_event(i, state);
-		}
-	}
-
-	for(int i = 0; i < NUM_ENCODERS; i++) {
-		if(enc_buttons[i].changed) {
-			bool state;
-
-			CM_ATOMIC_BLOCK() {
-				enc_buttons[i].changed = false;
-				state = enc_buttons[i].is_pressed;
-			}
-
-			control_handle_enc_press(i, state);
-		}
-		if(enc_rot[i].changed) {
-			int8_t dir;
-
-			CM_ATOMIC_BLOCK() {
-				enc_rot[i].changed = false;
-				dir = enc_rot[i].dir;
-			}
-
-			control_handle_enc_rotate(i, dir);
-		}
-	}
 }
 
 #define DEBOUNCE_TIME 10
 #define ENCODER_HOLD_TIME 30
 
-static void sys_tick_handler(void)
+static uint32_t last_debounce_millis = 0;
+
+static uint32_t switch_last_change[NUM_KEYS] = {0};
+static uint32_t enc_last_change[NUM_ENCODERS] = {0};
+static uint32_t enc_hold_counter[NUM_ENCODERS] = {0};
+
+void input_poll(void)
 {
-	for(int i = 0; i < NUM_KEYS; i++) {
-		bool raw = (gpio_get(switches[i].port, switches[i].pin) == 0);
+	uint32_t current_time = get_millis();
 
-		if(raw != switches[i].is_pressed) {
-			switches[i].counter++;
-			if(switches[i].counter >= DEBOUNCE_TIME) {
-				switches[i].is_pressed = raw;
-				switches[i].counter = 0;
-				switches[i].changed = true;
+	if (current_time - last_debounce_millis >= 2) {
+		last_debounce_millis = current_time;
+
+		for(int i = 0; i < NUM_KEYS; i++) {
+			bool raw = (gpio_get(switches[i].port, switches[i].pin) == 0);
+
+			if(raw != switches[i].is_pressed) {
+				if (current_time - switch_last_change[i] >= DEBOUNCE_TIME) {
+					switches[i].is_pressed = raw;
+					control_handle_key_event(i, raw);
+					switch_last_change[i] = current_time;
+				}
+			} else {
+				switch_last_change[i] = current_time;
 			}
-		} else {
-			switches[i].counter = 0;
 		}
-	}
 
-	for(int i = 0; i < NUM_ENCODERS; i++) {
-		bool raw = (gpio_get(enc_buttons[i].port, enc_buttons[i].pin) == 0);
+		for(int i = 0; i < NUM_ENCODERS; i++) {
+			bool raw = (gpio_get(enc_buttons[i].port, enc_buttons[i].pin) == 0);
 
-		if(raw != enc_buttons[i].is_pressed) {
-			enc_buttons[i].counter++;
-			if(enc_buttons[i].counter >= DEBOUNCE_TIME) {
-				enc_buttons[i].is_pressed = raw;
-				enc_buttons[i].counter = 0;
-				enc_buttons[i].changed = true;
+			if(raw != enc_buttons[i].is_pressed) {
+				if (current_time - enc_last_change[i] >= DEBOUNCE_TIME) {
+					enc_buttons[i].is_pressed = raw;
+					control_handle_enc_press(i, raw);
+					enc_last_change[i] = current_time;
+				}
+			} else {
+				enc_last_change[i] = current_time;
 			}
-		} else {
-			enc_buttons[i].counter = 0;
 		}
 	}
 
 	for(int i = 0; i < NUM_ENCODERS; i++) {
 		int8_t dir = get_encoder_value(i);
 
-		if(dir != enc_rot[i].dir) {
-			enc_rot[i].dir = dir;
-			enc_rot[i].changed = true;
-			enc_rot[i].counter = ENCODER_HOLD_TIME;
+		if(dir != 0) {
+			control_handle_enc_rotate(i, dir);
+			enc_hold_counter[i] = current_time + ENCODER_HOLD_TIME;
 		}
-		else if(enc_rot[i].counter > 0) {
-			enc_rot[i].counter--;
-
-			if(enc_rot[i].counter == 0) {
-				enc_rot[i].dir = 0;
-				enc_rot[i].changed = true;
-			}
+		else if (enc_hold_counter[i] != 0 && current_time >= enc_hold_counter[i]) {
+			enc_hold_counter[i] = 0;
+			control_handle_enc_rotate(i, 0);
 		}
 	}
 }
