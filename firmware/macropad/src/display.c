@@ -218,7 +218,7 @@ void display_get_screen_size(uint8_t* width, uint8_t* height) {
 
 void display_update(void) {
 	for(int i = 0; i < NUM_CHUNKS; i++) {
-		if (dirty[i]) {
+		if (dirty[i]==1) {
 			ssd1306_update(i);
 			dirty[i] = 0;
 			break;
@@ -233,6 +233,7 @@ void display_layer(macro_layer_t* layer) {
 
 	for(int i = 0; i < 3; i++) {
 		for(int j = 0; j < 3; j++) {
+			//ssd1306_string(i*44, 2 + j*2, layer->binding_names[j*3 + i]);
 			ssd1306_string(i*44, 2 + j*2, layer->binding_names[j*3 + i]);
 		}
 	}

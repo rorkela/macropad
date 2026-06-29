@@ -9,8 +9,8 @@
 #endif
 #define MAPPINGS_ADDR 0x08007800
 
-#define MAX_LAYER_NAME 10
-#define MAX_BINDING_NAME 10
+#define MAX_LAYER_NAME 5
+#define MAX_BINDING_NAME 5
 #define NUM_KEYS 9
 #define NUM_ENCODERS 2
 

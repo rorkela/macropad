@@ -61,6 +61,7 @@ int control_init(void)
 	current_layer_idx = 0;
 
 	display_string(0, 0, current_layer->layer_name);
+	display_layer(current_layer);
 
 	return 0;
 }

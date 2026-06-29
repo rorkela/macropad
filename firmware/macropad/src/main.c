@@ -20,8 +20,10 @@ static void init(void)
 
 int main(void)
 {
+	for (int i=0;i<80000;i++) __asm__ volatile ("nop");
 	init();
 
+	display_init();
 	if(control_init() != 0)
 	{
 		flash_unlock();
@@ -31,14 +33,16 @@ int main(void)
 
 		scb_reset_system();
 	}
-
-	display_init();
+	//display_char(10,1,'Z');
+	//display_update();
 	usb_init();
 	input_init();
-
+	int x=0;
 	while(1)
 	{
 		input_poll();
+		//x=(x+2)%64;
+		//display_hline(0,127,x);
 		display_update();
 		usb_run();
 	}
