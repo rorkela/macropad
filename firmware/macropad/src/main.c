@@ -33,8 +33,6 @@ int main(void)
 	}
 
 	display_init();
-	display_char(0, 0, 'T');
-
 	usb_init();
 	input_init();
 

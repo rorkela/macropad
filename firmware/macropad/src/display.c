@@ -1,21 +1,24 @@
-#include <libopencm3/stm32/i2c.h>
 #include <stdint.h>
 #include <string.h>
+
 #include <libopencm3/stm32/i2c.h>
 #include <libopencm3/stm32/rcc.h>
 #include <libopencm3/stm32/gpio.h>
 
 #include "display.h"
-#include "time.h"
 
+#include "defs.h"
 #include "font3x7.h"
 
 #define SSD1306_ADDR 0x3C
+#define SSD1306_WIDTH 128
+#define SSD1306_HEIGHT 64
 
-static const uint8_t SSD1306_WIDTH = 128;
-static const uint8_t SSD1306_HEIGHT = 64;
+#define CHUNK_SIZE 32
+#define NUM_CHUNKS ((SSD1306_WIDTH / CHUNK_SIZE) * (SSD1306_HEIGHT / 8))
 
-static uint8_t display_buffer[128 * 8];
+static uint8_t display_buffer[SSD1306_WIDTH * (SSD1306_HEIGHT / 8)];
+static uint8_t dirty[NUM_CHUNKS];
 
 static void i2c_init(void) {
 	rcc_periph_clock_enable(RCC_I2C1);
@@ -30,7 +33,7 @@ static void i2c_init(void) {
 	i2c_peripheral_disable(I2C1);
 	rcc_periph_reset_pulse(RST_I2C1);
 
-	i2c_set_speed(I2C1, i2c_speed_sm_100k, rcc_apb1_frequency / 1000000);
+	i2c_set_speed(I2C1, i2c_speed_fm_400k, rcc_apb1_frequency / 1000000);
 	i2c_peripheral_enable(I2C1);
 }
 
@@ -42,9 +45,9 @@ static void ssd1306_command(uint8_t cmd) {
 	while (!(I2C_SR1(I2C1) & I2C_SR1_ADDR));
 	(void)I2C_SR2(I2C1);
 	i2c_send_data(I2C1, 0x00); // Indicate command
-	while (!(I2C_SR1(I2C1) & I2C_SR1_BTF));
+	while (!(I2C_SR1(I2C1) & I2C_SR1_TxE));
 	i2c_send_data(I2C1, cmd);
-	while (!(I2C_SR1(I2C1) & I2C_SR1_BTF));
+	while (!(I2C_SR1(I2C1) & I2C_SR1_TxE));
 	i2c_send_stop(I2C1);
 }
 
@@ -57,10 +60,10 @@ static void ssd1306_data(uint8_t *data, uint16_t len) {
 	(void)I2C_SR2(I2C1);
 	i2c_send_data(I2C1, 0x40);
 	for (uint16_t i = 0; i < len; i++) {
-		while (!(I2C_SR1(I2C1) & I2C_SR1_BTF));
+		while (!(I2C_SR1(I2C1) & I2C_SR1_TxE));
 		i2c_send_data(I2C1, data[i]);
 	}
-	while (!(I2C_SR1(I2C1) & I2C_SR1_BTF));
+	while (!(I2C_SR1(I2C1) & I2C_SR1_TxE));
 	i2c_send_stop(I2C1);
 }
 
@@ -121,6 +124,17 @@ static void ssd1306_init(void) {
 	ssd1306_command(0xAF);
 }
 
+static void mark_chunk_dirty(uint8_t x, uint8_t y) {
+	uint8_t chunk_id = (y * (SSD1306_WIDTH / CHUNK_SIZE)) + (x / CHUNK_SIZE);
+
+	if(chunk_id < NUM_CHUNKS) dirty[chunk_id] = 1;
+}
+
+static void mark_all_dirty(void) {
+	for(int i = 0; i < NUM_CHUNKS; i++)
+		dirty[i] = 1;
+}
+
 static void ssd1306_set_pos(uint8_t x, uint8_t y) {
 	ssd1306_command(0xB0 + y);
 	ssd1306_command((x & 0x0F));
@@ -129,20 +143,28 @@ static void ssd1306_set_pos(uint8_t x, uint8_t y) {
 
 static void ssd1306_clear(void) {
 	memset(display_buffer, 0, sizeof(display_buffer));
+	mark_all_dirty();
 }
 
-static void ssd1306_update(uint8_t page) {
-	ssd1306_set_pos(0, page);
-	ssd1306_data(&display_buffer[page * 128], 128);
+static void ssd1306_update(uint8_t chunk) {
+	uint8_t page = chunk / (SSD1306_WIDTH / CHUNK_SIZE);
+	uint8_t offset = (chunk % (SSD1306_WIDTH / CHUNK_SIZE)) * CHUNK_SIZE;
+
+	ssd1306_set_pos(offset, page);
+	ssd1306_data(&display_buffer[(page * SSD1306_WIDTH) + offset], CHUNK_SIZE);
 }
 
 static void ssd1306_char(uint8_t x, uint8_t y, char c) {
 	if (c < 32 || c > 126) return;
+	if (x + FONT_WIDTH >= SSD1306_WIDTH) return;
+
 	const uint8_t *glyph = font[(int)c];
 	for (uint8_t col = 0; col < FONT_WIDTH; col++) {
-		display_buffer[y * 128 + x + col] = glyph[col];
+		display_buffer[y * SSD1306_WIDTH + x + col] = glyph[col];
+		mark_chunk_dirty(x + col, y);
 	}
-	display_buffer[y * 128 + x + FONT_WIDTH] = 0x00;
+	display_buffer[y * SSD1306_WIDTH + x + FONT_WIDTH] = 0x00;
+	mark_chunk_dirty(x + FONT_WIDTH, y);
 }
 
 static void ssd1306_string(uint8_t x, uint8_t y, const char *str) {
@@ -154,18 +176,23 @@ static void ssd1306_string(uint8_t x, uint8_t y, const char *str) {
 	}
 }
 
-static uint32_t last_display_millis = 0;
-static uint8_t current_page = 0;
+static void ssd1306_hline(uint8_t x1, uint8_t x2, uint8_t pixel_y){
+	if(pixel_y > SSD1306_HEIGHT) return;
+	if(x1 >= SSD1306_WIDTH || x1 > x2) return;
+	if(x2 >= SSD1306_WIDTH) x2 = SSD1306_WIDTH - 1;
+
+	uint8_t page = pixel_y / 8;
+	uint8_t bitmask = (1 << (pixel_y % 8));
+	for (int x = x1; x <= x2; x++) {
+		display_buffer[page * SSD1306_WIDTH + x] |= bitmask;
+		mark_chunk_dirty(x, page);
+	}
+}
 
 void display_init(void) {
-	rcc_apb1_frequency = 72000000;
-	rcc_apb2_frequency = 72000000;
-
 	i2c_init();
 	ssd1306_init();
 	ssd1306_clear();
-
-	last_display_millis = get_millis();
 }
 
 void display_clear(void) {
@@ -180,17 +207,33 @@ void display_string(uint8_t x, uint8_t y, const char *str) {
 	ssd1306_string(x, y, str);
 }
 
+void display_hline(uint8_t x1, uint8_t x2, uint8_t pixel_y) {
+	ssd1306_hline(x1, x2, pixel_y);
+}
+
 void display_get_screen_size(uint8_t* width, uint8_t* height) {
 	*width = SSD1306_WIDTH;
 	*height = SSD1306_HEIGHT / 8;
 }
 
 void display_update(void) {
-	uint32_t current_time_millis = get_millis();
-	if(current_time_millis - last_display_millis > 5) {
-		last_display_millis = current_time_millis;
-		ssd1306_update(current_page);
-		current_page++;
-		if(current_page >= 8) current_page = 0;
+	for(int i = 0; i < NUM_CHUNKS; i++) {
+		if (dirty[i]) {
+			ssd1306_update(i);
+			dirty[i] = 0;
+			break;
+		}
+	}
+}
+
+void display_layer(macro_layer_t* layer) {
+	ssd1306_clear();
+	ssd1306_hline(0, SSD1306_WIDTH, 9);
+	ssd1306_string(0, 0, layer->layer_name);
+
+	for(int i = 0; i < 3; i++) {
+		for(int j = 0; j < 3; j++) {
+			ssd1306_string(i*44, 2 + j*2, layer->binding_names[j*3 + i]);
+		}
 	}
 }

@@ -48,7 +48,7 @@ int main(void) {
 	strncpy(layer0->layer_name, "LYR1", MAX_LAYER_NAME);
 
 	for(int k = 0; k < NUM_KEYS; k++) {
-		snprintf(layer0->binding_names[k], MAX_BINDING_NAME, "K%d", k + 1);
+		snprintf(layer0->binding_names[k], MAX_BINDING_NAME, "%c", '0' + k);
 		set_key_action(&layer0->actions[k], 0, layer1_keys[k]);
 	}
 
@@ -63,7 +63,7 @@ int main(void) {
 	strncpy(layer1->layer_name, "LYR2", MAX_LAYER_NAME);
 
 	for(int k = 0; k < NUM_KEYS; k++) {
-		snprintf(layer1->binding_names[k], MAX_BINDING_NAME, "K%d", k + 1);
+		snprintf(layer1->binding_names[k], MAX_BINDING_NAME, "%c", 'A' + k);
 		set_key_action(&layer1->actions[k], 0, layer1_keys[k]);
 	}
 

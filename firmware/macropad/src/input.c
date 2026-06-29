@@ -135,11 +135,6 @@ void input_init(void)
 {
 	encoder_init();
 	switches_init();
-
-	systick_set_clocksource(STK_CSR_CLKSOURCE_AHB);
-	systick_set_frequency(1000, 72000000);
-	systick_interrupt_enable();
-	systick_counter_enable();
 }
 
 #define DEBOUNCE_TIME 10
