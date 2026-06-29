@@ -60,7 +60,6 @@ int control_init(void)
 	current_layer = &mappings->layers[0];
 	current_layer_idx = 0;
 
-	display_string(0, 0, current_layer->layer_name);
 	display_layer(current_layer);
 
 	return 0;
@@ -144,7 +143,7 @@ void control_handle_enc_rotate(uint8_t enc, int8_t dir)
 		}
 
 		current_layer = &mappings->layers[current_layer_idx];
-		display_string(0, 0, current_layer->layer_name);
+		display_layer(current_layer);
 		return;
 	}
 

@@ -11,4 +11,4 @@ void display_string(uint8_t x, uint8_t y, const char *str);
 void display_hline(uint8_t x1, uint8_t x2, uint8_t pixel_y);
 void display_update(void);
 void display_get_screen_size(uint8_t* width, uint8_t* height);
-void display_layer(macro_layer_t* layer);
+void display_layer(const macro_layer_t* layer);
