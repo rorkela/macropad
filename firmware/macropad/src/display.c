@@ -10,6 +10,7 @@
 
 #include "defs.h"
 #include "font3x7.h"
+#include "figures.h"
 #define SSD1306_ADDR 0x3C
 #define SSD1306_WIDTH 128
 #define SSD1306_HEIGHT 64
@@ -270,6 +271,17 @@ void display_string(uint8_t x, uint8_t y, const char *str) {
 
 void display_hline(uint8_t x1, uint8_t x2, uint8_t pixel_y) {
 	ssd1306_hline(x1, x2, pixel_y);
+}
+
+void display_iit(uint8_t x, uint8_t y) {
+	if (x + IITH_WIDTH >= SSD1306_WIDTH) return;
+	if (y + IITH_HEIGHT_8 >= SSD1306_HEIGHT/8) return;
+	for (uint8_t row = 0; row < IITH_HEIGHT_8; row++) {
+		for (uint8_t col = 0; col < IITH_WIDTH; col++) {
+			display_buffer[(y+row) * SSD1306_WIDTH + x + col] = iith[row][col];
+			mark_chunk_dirty(x + col, y+row);
+		}
+	}
 }
 
 void display_get_screen_size(uint8_t* width, uint8_t* height) {

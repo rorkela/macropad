@@ -27,6 +27,10 @@ int main(void)
 	time_init();
 
 	display_init();
+	display_iit(54,2);
+	display_string(50, 5, "IITH PAD\0");
+	for(int i=0;i<100;i++) display_update();
+	for (int i=0;i<8000000;i++) __asm__ volatile ("nop");
 	if(control_init() != 0)
 	{
 		flash_unlock();
