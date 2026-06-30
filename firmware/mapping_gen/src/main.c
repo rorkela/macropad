@@ -49,7 +49,7 @@ int main(void) {
 
 	for(int k = 0; k < NUM_KEYS; k++) {
 		snprintf(layer0->binding_names[k], MAX_BINDING_NAME, "%c", '0' + k);
-		set_key_action(&layer0->actions[k], 0, layer1_keys[k]);
+		set_key_action(&layer0->actions[k], 0, layer0_keys[k]);
 	}
 
 	strncpy(layer0->binding_names[9], "VOL-", MAX_BINDING_NAME);

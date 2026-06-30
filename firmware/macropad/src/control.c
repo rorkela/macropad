@@ -10,34 +10,35 @@ const mappings_t* mappings;
 const macro_layer_t* current_layer;
 static uint8_t current_layer_idx;
 
-static bool initialized;
-
 static const uint8_t zero[PAYLOAD_SIZE] = {0};
 
-static mode_t current_mode = NORMAL;
-
-mode_t get_current_mode(void)
-{
-	if(!initialized) return -1;
-
-	return current_mode;
-}
-
-const mappings_t* get_mappings(void)
-{
-	if(!initialized) return NULL;
-
+const mappings_t* get_mappings(void) {
 	return mappings;
 }
 
-uint8_t get_current_layer_idx(void)
-{
+const macro_layer_t* get_layer(uint8_t layer) {
+	if(layer >= mappings->total_layers)
+		return NULL;
+
+	return &mappings->layers[layer];
+}
+
+uint8_t get_current_layer_idx(void) {
 	return current_layer_idx;
 }
 
-int control_init(void)
-{
-	initialized = false;
+uint8_t get_num_layers(void) {
+	return mappings->total_layers;
+}
+
+const char* get_layer_name(uint8_t layer) {
+	if(layer >= mappings->total_layers)
+		return NULL;
+
+	return mappings->layers[layer].layer_name;
+}
+
+int control_init(void) {
 	mappings = (mappings_t*)MAPPINGS_ADDR;
 
 	if(mappings == NULL)
@@ -55,12 +56,10 @@ int control_init(void)
 		return -3;
 	}
 
-	initialized = true;
-
 	current_layer = &mappings->layers[0];
 	current_layer_idx = 0;
 
-	display_layer(current_layer);
+	display_layer();
 
 	return 0;
 }
@@ -97,8 +96,9 @@ void control_handle_enc_press(uint8_t enc, bool pressed)
 	if(enc >= NUM_ENCODERS)
 		return;
 
-	if(enc == 0) {
-		current_mode = (current_mode == NORMAL)? LAYER_SWITCH:NORMAL;
+	if(enc == 0 && pressed) {
+		display_cycle_mode();
+		display_layer();
 
 		return;
 	}
@@ -130,9 +130,6 @@ void control_handle_enc_rotate(uint8_t enc, int8_t dir)
 		return;
 
 	if(enc == 0) {
-		if(current_mode != LAYER_SWITCH)
-			return;
-
 		if(dir == 1) {
 			if(current_layer_idx < (mappings->total_layers - 1))
 				current_layer_idx++;
@@ -143,7 +140,7 @@ void control_handle_enc_rotate(uint8_t enc, int8_t dir)
 		}
 
 		current_layer = &mappings->layers[current_layer_idx];
-		display_layer(current_layer);
+		display_layer();
 		return;
 	}
 
