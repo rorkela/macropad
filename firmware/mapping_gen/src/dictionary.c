@@ -1,4 +1,5 @@
 #include <ctype.h>
+#include <stdint.h>
 #include <stdio.h>
 #include <string.h>
 
@@ -49,18 +50,18 @@ const key_lookup_t standard_key_dict[] = {{"NONE", KEY_NONE},
                                           {"BACKSPACE", KEY_BACKSPACE},
                                           {"TAB", KEY_TAB},
                                           {"SPACE", KEY_SPACE},
-                                          {"MINUS", KEY_MINUS},
-                                          {"EQUAL", KEY_EQUAL},
-                                          {"LEFT_BRACKET", KEY_LEFT_BRACKET},
-                                          {"RIGHT_BRACKET", KEY_RIGHT_BRACKET},
-                                          {"BACKSLASH", KEY_BACKSLASH},
-                                          {"HASHTILDE", KEY_HASHTILDE},
-                                          {"SEMICOLON", KEY_SEMICOLON},
-                                          {"APOSTROPHE", KEY_APOSTROPHE},
-                                          {"GRAVE", KEY_GRAVE},
-                                          {"COMMA", KEY_COMMA},
-                                          {"PERIOD", KEY_PERIOD},
-                                          {"SLASH", KEY_SLASH},
+                                          {"-", KEY_MINUS},
+                                          {"=", KEY_EQUAL},
+                                          {"[", KEY_LEFT_BRACKET},
+                                          {"]", KEY_RIGHT_BRACKET},
+                                          {"\\", KEY_BACKSLASH},
+                                          {"~", KEY_HASHTILDE},
+                                          {";", KEY_SEMICOLON},
+                                          {"'", KEY_APOSTROPHE},
+                                          {"`", KEY_GRAVE},
+                                          {",", KEY_COMMA},
+                                          {".", KEY_PERIOD},
+                                          {"/", KEY_SLASH},
                                           {"CAPSLOCK", KEY_CAPSLOCK},
                                           {"CAPS", KEY_CAPSLOCK},
                                           {"F1", KEY_F1},
@@ -144,18 +145,22 @@ bool lookup_consumer_value(const char *token, uint16_t *out_val)
     return false;
 }
 
-bool parse_shortcut(const char *token, uint8_t *out_type, uint8_t *out_mods, uint16_t *out_keycode)
+bool parse_shortcut(const char *token, uint8_t *type, uint8_t payload[PAYLOAD_SIZE])
 {
-    *out_mods = 0;
-    *out_keycode = 0;
-    *out_type = USB_TYPE_KEY;
+    *type = USB_TYPE_KEY;
 
-    char token_buf[128];
+    for (int i = 0; i < PAYLOAD_SIZE; i++)
+        payload[i] = 0;
+
+    char token_buf[256];
     strncpy(token_buf, token, sizeof(token_buf) - 1);
     token_buf[sizeof(token_buf) - 1] = '\0';
 
     bool holds_modifier = false;
     bool holds_consumer = false;
+    bool holds_standard = false;
+
+    int num_consumer = 0;
 
     char *sub_token = strtok(token_buf, "+");
     while (sub_token != NULL)
@@ -167,7 +172,12 @@ bool parse_shortcut(const char *token, uint8_t *out_type, uint8_t *out_mods, uin
         {
             if (strcmp(clean_sub, mod_dict[i].token) == 0)
             {
-                *out_mods |= (uint8_t)mod_dict[i].val;
+                if (holds_consumer)
+                {
+                    holds_modifier = true;
+                    goto parse_fail;
+                }
+                payload[0] |= (uint8_t)mod_dict[i].val;
                 holds_modifier = true;
                 identified = true;
                 break;
@@ -183,10 +193,26 @@ bool parse_shortcut(const char *token, uint8_t *out_type, uint8_t *out_mods, uin
         {
             if (strcmp(clean_sub, consumer_key_dict[i].token) == 0)
             {
-                *out_keycode = consumer_key_dict[i].val;
-                *out_type = USB_TYPE_CNTRL;
+                if (holds_modifier)
+                {
+                    holds_consumer = true;
+                    goto parse_fail;
+                }
+                if (holds_consumer)
+                {
+                    num_consumer = 2;
+                    goto parse_fail;
+                }
+                if (holds_standard)
+                {
+                    holds_consumer = true;
+                    goto parse_fail;
+                }
+                payload[0] = consumer_key_dict[i].val;
+                *type = USB_TYPE_CNTRL;
                 holds_consumer = true;
                 identified = true;
+                num_consumer++;
                 break;
             }
         }
@@ -200,17 +226,37 @@ bool parse_shortcut(const char *token, uint8_t *out_type, uint8_t *out_mods, uin
         {
             if (strcmp(clean_sub, standard_key_dict[i].token) == 0)
             {
-                *out_keycode = standard_key_dict[i].val;
+                if (holds_consumer)
+                {
+                    holds_standard = true;
+                    goto parse_fail;
+                }
+                uint16_t keycode = standard_key_dict[i].val;
+                uint8_t byte_idx = ((keycode >> 8) & 0xFF) + 1;
+                uint8_t val = keycode & 0xFF;
+                payload[byte_idx] |= val;
                 break;
             }
         }
         sub_token = strtok(NULL, "+");
     }
 
+    return true;
+
+parse_fail:
+
     if (holds_modifier && holds_consumer)
     {
         fprintf(stderr, "Syntax Error: Cannot combine modifiers (CTRL/SHIFT) with consumer keys like '%s'\n", token);
-        return false;
     }
-    return true;
+    else if (holds_consumer && num_consumer > 1)
+    {
+        fprintf(stderr, "Syntax Error: Cannot combine multiple media keys like in '%s'\n", token);
+    }
+    else if (holds_consumer && holds_standard)
+    {
+        fprintf(stderr, "Syntax Error: Cannot mix media keys with normal keys like in '%s'\n", token);
+    }
+
+    return false;
 }

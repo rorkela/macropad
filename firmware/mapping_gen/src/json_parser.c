@@ -9,7 +9,7 @@
 #include "defs.h"
 #include "dictionary.h"
 
-void set_action_payload(usb_action_t *action, uint8_t type, uint8_t modifiers, uint16_t hid_keycode)
+void set_action_payload(usb_action_t *action, uint8_t type, uint8_t modifiers, uint16_t *keycodes, uint16_t key_count)
 {
     action->usb_type = type;
     memset(action->payload, 0, PAYLOAD_SIZE);
@@ -17,13 +17,19 @@ void set_action_payload(usb_action_t *action, uint8_t type, uint8_t modifiers, u
     if (type == USB_TYPE_KEY)
     {
         action->payload[0] = modifiers;
-        uint8_t byte_idx = ((hid_keycode >> 8) & 0xFF) + 1;
-        uint8_t val = hid_keycode & 0xFF;
-        action->payload[byte_idx] |= val;
+
+        for (uint8_t i = 0; i < key_count; i++)
+        {
+            uint16_t keycode = keycodes[i];
+            uint8_t byte_idx = ((keycode >> 8) & 0xFF) + 1;
+            uint8_t val = keycode & 0xFF;
+
+            action->payload[byte_idx] |= val;
+        }
     }
     else if (type == USB_TYPE_CNTRL)
     {
-        action->payload[0] = (uint8_t)(hid_keycode & 0xFF);
+        action->payload[0] = (uint8_t)(keycodes[0] & 0xFF);
     }
 }
 
@@ -134,12 +140,10 @@ int parse_json_layout(const char *filename, mappings_t **out_map, size_t *out_bi
                         strncpy(active_layer->binding_names[k], disp_name, MAX_BINDING_NAME);
 
                         uint8_t type = USB_TYPE_KEY, mods = 0;
-                        uint16_t keycode = 0;
-                        if (parse_shortcut(shortcut, &type, &mods, &keycode))
-                        {
-                            set_action_payload(&active_layer->actions[k], type, mods, keycode);
-                        }
-                        else
+                        uint16_t keycode;
+                        memset(active_layer->actions[k].payload, 0, PAYLOAD_SIZE);
+                        if (!parse_shortcut(shortcut, &active_layer->actions[k].usb_type,
+                                            active_layer->actions[k].payload))
                         {
                             goto parse_fail;
                         }

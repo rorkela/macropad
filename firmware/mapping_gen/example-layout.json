@@ -1,0 +1,59 @@
+[
+	{
+		"name": "LYR1",
+		"keys": {
+			"key_0": "0",
+			"key_1": "1",
+			"key_2": "2",
+			"key_3": "3",
+			"key_4": "4",
+			"key_5": "5",
+			"key_6": "6",
+			"key_7": "7",
+			"key_8": "8"
+		},
+		"encoder": {
+			"ccw": "VOL-",
+			"cw": "VOL+",
+			"sw": "MUTE"
+		}
+	},
+	{
+		"name": "LYR2",
+		"keys": {
+			"key_0": ["A", "A"],
+			"key_1": ["B", "B"],
+			"key_2": ["C", "C"],
+			"key_3": ["D", "D"],
+			"key_4": ["E", "E"],
+			"key_5": ["F", "F"],
+			"key_6": ["G", "G"],
+			"key_7": ["H", "H"],
+			"key_8": ["I", "I"]
+		},
+		"encoder": {
+			"ccw": ["BRT-", "BRT-"],
+			"cw": ["BRT+", "BRT+"],
+			"sw": "PLAY"
+		}
+	},
+	{
+		"name": "IDKWTCI",
+		"keys": {
+			"key_0": ["COPY", "CTRL + C"],
+			"key_1": ["PASTE", "CTRL + V"],
+			"key_2": ["SPAM", "A+B+C+D+E+F+G+H+I+J+K+L+M+N+O+P+Q+R+S+T+U+V+W+X+Y+Z"],
+			"key_3": ["SWITCH", "ALT + TAB"],
+			"key_4": "ALT + F2",
+			"key_5": ["STOP", "STOP"],
+			"key_6": ["PREV", "PREV"],
+			"key_7": ["PLAY/PAUSE", "PLAY_PAUSE"],
+			"key_8": ["NEXT", "NEXT"]
+		},
+		"encoder": {
+			"ccw": "VOL-",
+			"cw": "VOL+",
+			"sw": "MUTE"
+		}
+	}
+]
