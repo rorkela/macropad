@@ -5,6 +5,7 @@
 
 #include "defs.h"
 #include "json_parser.h"
+#include "gui.h"
 
 #if defined(_WIN32) || defined(_WIN64)
 #define NULL_DEVICE "NUL"
@@ -20,6 +21,7 @@ void print_usage(const char *prog_name)
     printf("  -h, --help           Show this help message and exit\n");
     printf("  -c, --compile-only   Only generate 'mappings.bin' file without flashing via dfu-util\n");
     printf("  -v, --verbose        Show process logs during execution\n\n");
+    printf("  -g, --gui            Open GUI\n\n");
     printf("Arguments:\n");
     printf("  [input_file.json]    Path to layout JSON (defaults to 'layout.json')\n");
 }
@@ -44,6 +46,10 @@ int main(int argc, char *argv[])
         else if (strcmp(argv[i], "--verbose") == 0 || strcmp(argv[i], "-v") == 0)
         {
             verbose = true;
+        }
+        else if (strcmp(argv[i], "--gui") == 0 || strcmp(argv[i], "-g") == 0)
+        {
+            call_gui();
         }
         else
         {

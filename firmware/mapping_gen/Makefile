@@ -9,16 +9,17 @@ PROJECT := mapping-gen
 SRC_DIR := src
 INC_DIR := ../common
 
-INCLUDES    += -I$(INC_DIR) -Ilibs/cjson
+INCLUDES    += -I$(INC_DIR) -Ilibs/cjson -Ilibs/microui/src -Ilibs/microui/demo
 
 CFLAGS += $(INCLUDES)
+CFLAGS += -lSDL2 -lGL
 
 BUILD_DIR  ?= build
 OUTPUT_DIR ?= bin
 
 CC      := gcc
 
-CFILES := $(wildcard $(SRC_DIR)/*.c) libs/cjson/cJSON.c
+CFILES := $(wildcard $(SRC_DIR)/*.c) libs/cjson/cJSON.c libs/microui/src/microui.c libs/microui/demo/renderer.c
 OBJS := $(CFILES:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)
 
 $(OUTPUT_DIR)/$(PROJECT): $(OBJS)

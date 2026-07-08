@@ -4,3 +4,6 @@
 [submodule "firmware/mapping_gen/libs/cjson"]
 	path = firmware/mapping_gen/libs/cjson
 	url = https://github.com/DaveGamble/cJSON.git
+[submodule "firmware/mapping_gen/libs/microui"]
+	path = firmware/mapping_gen/libs/microui
+	url = https://github.com/rxi/microui.git
