@@ -1,93 +1,119 @@
+#include <stdbool.h>
 #include <stdio.h>
-#include <stdint.h>
 #include <stdlib.h>
 #include <string.h>
 
 #include "defs.h"
-#include "keys.h"
+#include "json_parser.h"
 
-const usb_keycode_t layer0_keys[NUM_KEYS] = {
-	KEY_0, KEY_1, KEY_2, KEY_3, KEY_4, KEY_5, KEY_6, KEY_7, KEY_8
-};
+#if defined(_WIN32) || defined(_WIN64)
+#define NULL_DEVICE "NUL"
+#else
+#define NULL_DEVICE "/dev/null"
+#endif
 
-const usb_keycode_t layer1_keys[NUM_KEYS] = {
-	KEY_A, KEY_B, KEY_C, KEY_D, KEY_E, KEY_F, KEY_G, KEY_H, KEY_I
-};
-
-void set_key_action(usb_action_t* action, uint8_t modifiers, usb_keycode_t hid_keycode) {
-	action->usb_type = USB_TYPE_KEY;
-	memset(action->payload, 0, PAYLOAD_SIZE);
-	action->payload[0] = modifiers;
-
-	uint8_t byte_idx = ((hid_keycode >> 8) & 0xFF) + 1;
-	uint8_t val  = hid_keycode & 0xFF;
-	action->payload[byte_idx] |= val;
+void print_usage(const char *prog_name)
+{
+    printf("Macro Pad Layout JSON Compiler\n");
+    printf("Usage: %s [options] [input_file.json]\n\n", prog_name);
+    printf("Options:\n");
+    printf("  -h, --help           Show this help message and exit\n");
+    printf("  -c, --compile-only   Only generate 'mappings.bin' file without flashing via dfu-util\n");
+    printf("  -v, --verbose        Show process logs during execution\n\n");
+    printf("Arguments:\n");
+    printf("  [input_file.json]    Path to layout JSON (defaults to 'layout.json')\n");
 }
 
-void set_consumer_action(usb_action_t* action, usb_consumer_t consumer_code) {
-	action->usb_type = USB_TYPE_CNTRL;
-	memset(action->payload, 0, PAYLOAD_SIZE);
-	action->payload[0] = consumer_code;
-}
+int main(int argc, char *argv[])
+{
+    const char *input_filename = "layout.json";
+    bool compile_only = false;
+    bool verbose = false;
 
-int main(void) {
-	uint8_t num_layers = 2;
+    for (int i = 1; i < argc; i++)
+    {
+        if (strcmp(argv[i], "--help") == 0 || strcmp(argv[i], "-h") == 0)
+        {
+            print_usage(argv[0]);
+            return 0;
+        }
+        else if (strcmp(argv[i], "--compile-only") == 0 || strcmp(argv[i], "-c") == 0)
+        {
+            compile_only = true;
+        }
+        else if (strcmp(argv[i], "--verbose") == 0 || strcmp(argv[i], "-v") == 0)
+        {
+            verbose = true;
+        }
+        else
+        {
+            input_filename = argv[i];
+        }
+    }
 
-	size_t total_bin_size = sizeof(mappings_t) + (sizeof(macro_layer_t) * num_layers);
-	mappings_t* map = (mappings_t*)calloc(1, total_bin_size);
+    printf("Loading layout config from: %s\n", input_filename);
 
-	if (!map) {
-		fprintf(stderr, "Memory allocation error.\n");
-		return 1;
-	}
+    mappings_t *map = NULL;
+    size_t total_bin_size = 0;
 
-	map->magic_number = MAGIC;
-	map->total_layers = num_layers;
+    if (parse_json_layout(input_filename, &map, &total_bin_size) != 0)
+    {
+        printf("Failed to parse JSON file layout configurations. Run '%s --help' for template guide.\n", argv[0]);
+        return 1;
+    }
 
-	macro_layer_t* layer0 = &map->layers[0];
-	strncpy(layer0->layer_name, "LYR1", MAX_LAYER_NAME);
+    const char *output_filename = compile_only ? "mappings.bin" : ".tmp_mappings.bin";
+    FILE *outfile = fopen(output_filename, "wb");
+    if (!outfile)
+    {
+        perror("Failed to generate file output binary target");
+        free(map);
+        return 1;
+    }
 
-	for(int k = 0; k < NUM_KEYS; k++) {
-		snprintf(layer0->binding_names[k], MAX_BINDING_NAME, "%c", '0' + k);
-		set_key_action(&layer0->actions[k], 0, layer0_keys[k]);
-	}
+    size_t written = fwrite(map, 1, total_bin_size, outfile);
+    fclose(outfile);
+    free(map);
 
-	strncpy(layer0->binding_names[9], "VOL-", MAX_BINDING_NAME);
-	strncpy(layer0->binding_names[10], "VOL+", MAX_BINDING_NAME);
-	layer0->actions[9].usb_type = USB_TYPE_CNTRL;
-	layer0->actions[9].payload[0] = AUDIO_VOL_DOWN;
-	layer0->actions[9].payload[1] = AUDIO_VOL_UP;
-	layer0->actions[9].payload[2] = AUDIO_MUTE;
+    if (compile_only)
+    {
+        printf("Successfully compiled layout structure!\n");
+        printf("Total Binary Payload Size: %zu bytes\n", written);
+        printf("Flash Output Location Target: 0x%08X\n", MAPPINGS_ADDR);
+    }
+    else
+    {
+        printf("Binary prepared (%zu bytes). Invoking dfu-util...\n", written);
 
-	macro_layer_t* layer1 = &map->layers[1];
-	strncpy(layer1->layer_name, "LYR2", MAX_LAYER_NAME);
+        char dfu_command[256];
+        if (verbose)
+        {
+            snprintf(dfu_command, sizeof(dfu_command), "dfu-util -d 1209:1253 -a 1 -D %s", output_filename);
+        }
+        else
+        {
+            snprintf(dfu_command, sizeof(dfu_command), "dfu-util -d 1209:1253 -a 1 -D %s > %s 2>&1", output_filename,
+                     NULL_DEVICE);
+        }
 
-	for(int k = 0; k < NUM_KEYS; k++) {
-		snprintf(layer1->binding_names[k], MAX_BINDING_NAME, "%c", 'A' + k);
-		set_key_action(&layer1->actions[k], 0, layer1_keys[k]);
-	}
+        if (verbose)
+            printf("Executing: %s\n", dfu_command);
 
-	strncpy(layer1->binding_names[9], "BRT-", MAX_BINDING_NAME);
-	strncpy(layer1->binding_names[10], "BRT+", MAX_BINDING_NAME);
-	layer1->actions[9].usb_type = USB_TYPE_CNTRL;
-	layer1->actions[9].payload[0] = DISPLAY_BRIGHTNESS_DOWN;
-	layer1->actions[9].payload[1] = DISPLAY_BRIGHTNESS_UP;
-	layer1->actions[9].payload[2] = MEDIA_PLAY_PAUSE;
+        int status = system(dfu_command);
 
-	FILE* outfile = fopen("mappings.bin", "wb");
-	if (!outfile) {
-		perror("Failed to create output file");
-		free(map);
-		return 1;
-	}
+        remove(output_filename);
 
-	size_t written = fwrite(map, 1, total_bin_size, outfile);
-	fclose(outfile);
+        if (status == 0)
+        {
+            printf("\nFlash complete! Layout successfully deployed to macro pad.\n");
+        }
+        else
+        {
+            fprintf(stderr, "\nError: dfu-util flashing failed (Exit code: %d).\n", status);
+            fprintf(stderr, "Ensure your macro pad is in DFU bootloader mode and try again.\n");
+            return 1;
+        }
+    }
 
-	printf("Successfully compiled layout structure!\n");
-	printf("Total Binary Payload Size: %zu bytes\n", written);
-	printf("Flash Output Location Target: 0x%08X\n", MAPPINGS_ADDR);
-
-	free(map);
-	return 0;
+    return 0;
 }

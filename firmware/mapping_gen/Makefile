@@ -9,7 +9,7 @@ PROJECT := mapping-gen
 SRC_DIR := src
 INC_DIR := ../common
 
-INCLUDES    += -I$(INC_DIR)
+INCLUDES    += -I$(INC_DIR) -Ilibs/cjson
 
 CFLAGS += $(INCLUDES)
 
@@ -18,10 +18,8 @@ OUTPUT_DIR ?= bin
 
 CC      := gcc
 
-CFILES := $(wildcard $(SRC_DIR)/*.c)
+CFILES := $(wildcard $(SRC_DIR)/*.c) libs/cjson/cJSON.c
 OBJS := $(CFILES:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)
-
-all: $(OUTPUT_DIR)/$(PROJECT)
 
 $(OUTPUT_DIR)/$(PROJECT): $(OBJS)
 	@#printf "  CC      $(*)\n"
@@ -37,4 +35,4 @@ clean:
 	@#printf "  CLEAN\n"
 	$(Q)$(RM) -r $(OUTPUT_DIR) $(BUILD_DIR)
 
-.PHONY: clean all
+.PHONY: clean

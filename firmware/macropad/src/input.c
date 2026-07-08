@@ -42,13 +42,13 @@ static switch_t switches[NUM_KEYS] = {
 };
 
 static switch_t enc_buttons[NUM_ENCODERS] = {
+	{GPIOA, GPIO2, false, 0, false},
 	{GPIOA, GPIO10, false, 0, false},
-	{GPIOA, GPIO2, false, 0, false}
 };
 
 static enc_t enc_rot[NUM_ENCODERS] = {
+	{TIM2, 0, 0, 0, false},
 	{TIM1, 0, 0, 0, false},
-	{TIM2, 0, 0, 0, false}
 };
 
 static void configure_timer_hardware(uint32_t tim)

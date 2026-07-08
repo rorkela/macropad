@@ -289,12 +289,21 @@ void display_get_screen_size(uint8_t* width, uint8_t* height) {
 	*height = SSD1306_HEIGHT / 8;
 }
 
-void display_update(void) {
+void display_update_chunk(void) {
 	for(int i = 0; i < NUM_CHUNKS; i++) {
 		if (dirty[i]) {
 			ssd1306_update(i);
 			dirty[i] = 0;
 			break;
+		}
+	}
+}
+
+void display_update_all(void) {
+	for(int i = 0; i < NUM_CHUNKS; i++) {
+		if (dirty[i]) {
+			ssd1306_update(i);
+			dirty[i] = 0;
 		}
 	}
 }
