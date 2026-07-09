@@ -31,6 +31,7 @@ int main(int argc, char *argv[])
     const char *input_filename = "layout.json";
     bool compile_only = false;
     bool verbose = false;
+    bool gui = false;
 
     for (int i = 1; i < argc; i++)
     {
@@ -49,7 +50,7 @@ int main(int argc, char *argv[])
         }
         else if (strcmp(argv[i], "--gui") == 0 || strcmp(argv[i], "-g") == 0)
         {
-            call_gui();
+            gui=true;
         }
         else
         {
@@ -58,6 +59,7 @@ int main(int argc, char *argv[])
     }
 
     printf("Loading layout config from: %s\n", input_filename);
+    if(gui) call_gui(input_filename);
 
     mappings_t *map = NULL;
     size_t total_bin_size = 0;

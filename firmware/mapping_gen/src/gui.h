@@ -4,4 +4,4 @@
 
 #include "defs.h"
 
-void call_gui();
+void call_gui(char * filename);
