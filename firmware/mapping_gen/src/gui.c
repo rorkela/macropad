@@ -7,6 +7,7 @@
 #include "json_parser.h"
 #include "cJSON.h" // Ensure you compile with cJSON.c
 #include "defs.h"
+#include "themes.h"
 //JSON Functions
 #define MAX_BINDING_VALUE 64
 #define MAX_LAYERS 100
@@ -435,7 +436,7 @@ static void macropad_window(mu_Context *ctx) {
     mu_textbox(ctx, layers[current_layer].encoder_sw, sizeof(layers[current_layer].encoder_sw));
 
     /* Encoder Rotate Bind row */
-    mu_layout_row(ctx, 3, (int[]) { 130, 175,175 }, 0);
+    mu_layout_row(ctx, 3, (int[]) { 130, 150,-1 }, 0);
     mu_label(ctx, "Encoder Rotate:");
     mu_textbox(ctx, layers[current_layer].encoder_ccw, sizeof(layers[current_layer].encoder_ccw));
     mu_textbox(ctx, layers[current_layer].encoder_cw, sizeof(layers[current_layer].encoder_cw));
@@ -503,6 +504,7 @@ void call_gui(char * filename) {
   /* init microui */
   mu_Context *ctx = malloc(sizeof(mu_Context));
   mu_init(ctx);
+  memcpy(ctx->style->colors, theme_tokyonight, sizeof(theme_tokyonight));
   ctx->text_width = text_width;
   ctx->text_height = text_height;
 
